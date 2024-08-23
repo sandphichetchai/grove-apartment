@@ -1,0 +1,4 @@
+git add . (หรือชื่อไฟล์)
+git commit -m "ข้อความ"
+git push -u origin main
+git push -f origin main (ถ้า -u error)
