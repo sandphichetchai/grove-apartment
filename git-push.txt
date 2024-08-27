@@ -3,6 +3,6 @@ git branch -a
 git checkout -b edit-file
 
 // push file
-git add .   
+git add .
 git commit -m "ข้อความ"
 git push origin edit-file
