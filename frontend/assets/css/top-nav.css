@@ -1,0 +1,268 @@
+a {
+    text-decoration: none !important;
+}
+
+.top-header {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px #e1e1e1 solid;
+    background-color: var(--white);
+    z-index: 100;
+}
+
+.top-header i {
+    font-size: 18px;
+}
+
+.container-left{ 
+    width: 700px;
+    height: 100%;
+    display :flex;
+    justify-content: flex-start; 
+    align-items: center;
+    gap: 1rem;
+}
+
+.tell-icon, .address-icon {
+    text-align: center;
+    align-content: center;
+    width: 35px;
+    height: 35px;
+}
+
+.tell-icon {
+    background-color: #41671B;
+    border-radius: 100%;
+    margin-left: 1rem;
+}
+
+.tell-icon i {
+    color: var(--white);
+}
+
+.content-tell {
+    gap: 0.5rem;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+}
+
+.content-address {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.address-icon {
+    background-color: #41671B;
+    border-radius: 100%;
+}
+
+.address-icon i {
+    color: var(--white);
+}
+
+.container-right {
+    display: flex;
+    padding-right: 1rem;
+}
+
+.account, .book-now {
+    width: 130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1rem;
+    gap: 0.5rem;
+}
+
+.account {
+    border-left: 1px #e1e1e1 solid;
+}
+
+.user-icon i {
+    color: var(--black);
+}
+
+.book-now {
+    color: var(--white);
+    background-color: #41671B;
+}
+
+.bell-icon i {
+    color: var(--white);
+}
+
+.account:hover{
+    background-color: #d1d1d1;
+}
+
+.book-now:hover {
+    filter: brightness(120%);
+}
+
+/* Nav */
+nav.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--white);
+    padding: .5rem 1rem;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    z-index: 100;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.top-nav .logo img {
+    height: 70px;
+}
+
+.top-nav .brand-name {
+    color: var(--black);
+    font-size: 24px;
+    margin-left: 1rem;
+}
+
+.top-nav .nav-links {
+    display: flex;
+    list-style: none;
+    padding: 0;
+}
+
+.top-nav .nav-links li {
+    margin: 0 15px;
+}
+
+.top-nav .nav-links a {
+    color: var(--black);
+    font-size: 16px;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    margin-left: .5rem;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: var(--black);
+    margin: 4px 0;
+    transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(10px, -10px);
+}
+
+.mobile-menu {
+    display: none;
+    background-color: var(--white);
+    position: absolute;
+    top: 135px;
+    right: 0;
+    width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    z-index: 100;
+}
+
+.mobile-menu.active {
+    display: block;
+}
+
+.mobile-menu ul {
+    list-style: none;
+    padding: 0;
+}
+
+.mobile-menu ul li {
+    text-align: left;
+    padding: .5rem 0;
+    border-top: 1px #e1e1e1 solid;
+}
+
+.mobile-menu ul li:last-child {
+    border-bottom: 1px #e1e1e1 solid;
+}
+
+.mobile-menu ul li:hover {
+    background: linear-gradient(45deg, #888888, #ffffff);
+}
+
+.mobile-menu ul li:hover a {
+    color: var(--white);
+}
+
+.mobile-menu ul li a {
+    color: var(--black);
+    font-size: 18px;
+    margin-left: 1.25rem;
+}
+
+@media (max-width: 970px) {
+    .content-address {
+        display: none;
+    }
+}
+
+@media (min-width: 901px) {
+    .hamburger {
+        display: none !important;
+    }
+
+    .mobile-menu {
+        display: none !important;
+    }
+}
+
+@media (max-width: 900px) {
+    .nav-links {
+        display: none !important;
+    }
+
+    .hamburger {
+        display: flex !important;
+    }
+}
+
+@media (max-width: 450px) {
+    .container-left {
+        display: none;
+    }
+    .top-header {
+        justify-content: flex-end;
+    }
+    .container-right {
+        width: 100%;
+        padding: 0;
+    }
+    .account, .book-now {
+        width: 50%;
+    }
+    .hamburger {
+        transform: scale(.8);
+    }
+}
+
+@media (max-width: 370px) {
+    .top-nav .brand-name {
+        display: none;
+    }
+}

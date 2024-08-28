@@ -126,8 +126,8 @@ require 'top-nav.php';
                             <h5 class="card-title text-start">Room 1</h5>
                             <hr>
                             <p class="card-text text-start">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary float-start">500 บาท / คืน</a>
-                            <a href="#" class="text-decoration-none float-end pt-2">View Room ></a>
+                            <a href="#" class="btn float-start text-white" style="background-color: #446c1c;">500 บาท / คืน</a>
+                            <a href="#" class="text-decoration-none text-black float-end pt-2">View Room ></a>
                         </div>
                     </div>
                 </div>
@@ -138,8 +138,8 @@ require 'top-nav.php';
                             <h5 class="card-title text-start">Room 2</h5>
                             <hr>
                             <p class="card-text text-start">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary float-start">500 บาท / คืน</a>
-                            <a href="#" class="text-decoration-none float-end pt-2">View Room ></a>
+                            <a href="#" class="btn float-start text-white" style="background-color: #446c1c;">500 บาท / คืน</a>
+                            <a href="#" class="text-decoration-none text-black float-end pt-2">View Room ></a>
                         </div>
                     </div>
                 </div>
