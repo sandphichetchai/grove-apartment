@@ -11,7 +11,7 @@ require 'top-nav.php';
     <title>Blog</title>
     <link rel="stylesheet" href="assets/css/setting.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="stylesheet" href="assets/css/blog.css">
 </head>
 
 <style>

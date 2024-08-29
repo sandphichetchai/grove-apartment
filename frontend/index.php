@@ -61,28 +61,28 @@ require 'top-nav.php';
     </div>
 
     <!------------------------------------------------------------------ Menu ------------------------------------------------------------------>
-    <div class="menu-overlay d-flex">
-        <div class="mx-auto shadow-lg d-flex" role="group">
-            <a class="text text-black" href="#" style="text-decoration: none; flex-grow: 1;">
-                <div class="card" style="flex-grow: 1;">
+    <div class="container-fluid menu-overlay d-flex justify-content-center">
+        <div class="d-flex flex-row w-100" role="group" style="gap: 0;">
+            <a class="text text-black text-center" href="#" style="text-decoration: none; flex-grow: 1;">
+                <div class="card p-2" style="width: 100%;">
                     <p class="my-auto">Check In</p>
                     <p class="my-auto">1</p>
                 </div>
             </a>
-            <a class="text text-black" href="#" style="text-decoration: none; flex-grow: 1;">
-                <div class="card" style="flex-grow: 1;">
+            <a class="text text-black text-center" href="#" style="text-decoration: none; flex-grow: 1;">
+                <div class="card p-2" style="width: 100%;">
                     <p class="my-auto">Check Out</p>
                     <p class="my-auto">2</p>
                 </div>
             </a>
-            <a class="text text-black" href="#" style="text-decoration: none; flex-grow: 1;">
-                <div class="card" style="flex-grow: 1;">
+            <a class="text text-black text-center" href="#" style="text-decoration: none; flex-grow: 1;">
+                <div class="card p-2" style="width: 100%;">
                     <p class="my-auto">Guests</p>
                     <p class="my-auto">3</p>
                 </div>
             </a>
-            <a class="text text-black" href="#" style="text-decoration: none; flex-grow: 1;">
-                <div class="card text-white" style="background-color: #446c1c !important; flex-grow: 1;">
+            <a class="text text-white text-center" href="#" style="text-decoration: none; flex-grow: 1;">
+                <div class="card p-2 text-white" style="background-color: #446c1c !important; width: 100%;">
                     <p class="my-auto">Book Now</p>
                 </div>
             </a>
@@ -97,16 +97,18 @@ require 'top-nav.php';
     </div>
 
     <!------------------------------------------------------------------- About ------------------------------------------------------------------->
-    <div class="container-fluid bg-white d-flex px-0">
-        <div class="col-md-6 testimonial-text my-auto">
-            <h3 class="section-title-left text-start">About Us</h3>
-            <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusamus eaque consequatur blanditiis rem magnam laudantium unde vero itaque eveniet, impedit veritatis temporibus ducimus est optio perspiciatis. Natus ipsa officiis rerum.
-            </p>
-            <a class="btn btn-success" href="#">Learn More</a>
-        </div>
-        <div class="col-md-6">
-            <img src="assets/img/IMG_9010.jpg" alt="Scenic view" class="testimonial-img">
+    <div class="container-fluid bg-white px-0">
+        <div class="row">
+            <div class="col-md-6 col-sm-1 testimonial-text my-auto">
+                <h3 class="section-title-left text-start">About Us</h3>
+                <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusamus eaque consequatur blanditiis rem magnam laudantium unde vero itaque eveniet, impedit veritatis temporibus ducimus est optio perspiciatis. Natus ipsa officiis rerum.
+                </p>
+                <a class="btn btn-success" href="#">Learn More</a>
+            </div>
+            <div class="col-md-6 col-sm-1">
+                <img src="assets/img/IMG_9010.jpg" alt="Scenic view" class="testimonial-img">
+            </div>
         </div>
     </div>
 
@@ -119,8 +121,8 @@ require 'top-nav.php';
         <!-- Card -->
         <div class="container">
             <div class="row">
-                <div class="col-lg-6 col-md-12 mb-4 d-flex justify-content-end">
-                    <div class="card" style="width: 24rem; height:auto">
+                <div class="col-lg-6 col-md-12 mb-4 d-flex justify-content-center">
+                    <div class="card shadow" style="width: 24rem; height:auto">
                         <img src="assets/img/front.jpeg" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title text-start">Room 1</h5>
@@ -131,8 +133,8 @@ require 'top-nav.php';
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-12 mb-4 d-flex justify-content-start">
-                    <div class="card" style="width: 24rem; height:auto">
+                <div class="col-lg-6 col-md-12 mb-4 d-flex justify-content-center">
+                    <div class="card shadow" style="width: 24rem; height:auto">
                         <img src="assets/img/front.jpeg" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title text-start">Room 2</h5>
@@ -161,12 +163,12 @@ require 'top-nav.php';
     </div>
 
     <!------------------------------------------------------------------- Offer ------------------------------------------------------------------->
-    <div class="container-fluid py-4 px-0 text-center">
+    <div class="container-fluid py-4 px-0 text-center justify-content-center">
         <div class="container">
             <p class="section-title">Spacial Offers</p>
         </div>
-        <div class="container card-group">
-            <div class="card" style="width: 14rem; height:auto">
+        <div class="container card-group jusify-content-center">
+            <div class="col-lg-4 col-sm-1 card shadow ms-auto" style="width: 14rem; height:auto">
                 <img src="assets/img/IMG_9010.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title text-start">Card title</h5>
@@ -174,7 +176,7 @@ require 'top-nav.php';
                     <p class="card-text text-start">1 Adult is free when booking in July</p>
                 </div>
             </div>
-            <div class="card mx-2" style="width: 14rem; height:auto">
+            <div class="col-lg-4 col-sm-1 card shadow mx-2" style="width: 14rem; height:auto">
                 <img src="assets/img/IMG_9010.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title text-start">Card title</h5>
@@ -182,7 +184,7 @@ require 'top-nav.php';
                     <p class="card-text text-start">10% off families in march</p>
                 </div>
             </div>
-            <div class="card" style="width: 14rem; height:auto">
+            <div class="col-lg-4 col-sm-1 card shadow ms-auto" style="width: 14rem; height:auto">
                 <img src="assets/img/IMG_9010.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title text-start">Card title</h5>
@@ -270,36 +272,36 @@ require 'top-nav.php';
                 <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
                     <img
                         src="assets/img/IMG_9010.jpg"
-                        class="w-100 shadow-1-strong rounded mb-4"
+                        class="w-100 shadow-1-strong rounded shadow mb-4"
                         alt="Boat on Calm Water" />
 
                     <img
                         src="assets/img/commu.jpg"
-                        class="w-100 shadow-1-strong rounded mb-4"
+                        class="w-100 shadow-1-strong rounded shadow mb-4"
                         alt="Wintry Mountain Landscape" />
                 </div>
 
                 <div class="col-lg-4 mb-4 mb-lg-0">
                     <img
                         src="assets/img/IMG_9010.jpg"
-                        class="w-100 shadow-1-strong rounded mb-4"
+                        class="w-100 shadow-1-strong rounded shadow mb-4"
                         alt="Mountains in the Clouds" />
 
                     <img
                         src="assets/img/commu.jpg"
-                        class="w-100 shadow-1-strong rounded mb-4"
+                        class="w-100 shadow-1-strong rounded shadow mb-4"
                         alt="Boat on Calm Water" />
                 </div>
 
                 <div class="col-lg-4 mb-4 mb-lg-0">
                     <img
                         src="assets/img/IMG_9010.jpg"
-                        class="w-100 shadow-1-strong rounded mb-4"
+                        class="w-100 shadow-1-strong rounded shadow mb-4"
                         alt="Waves at Sea" />
 
                     <img
                         src="assets/img/commu.jpg"
-                        class="w-100 shadow-1-strong rounded mb-4"
+                        class="w-100 shadow-1-strong rounded shadow mb-4"
                         alt="Yosemite National Park" />
                 </div>
             </div>
