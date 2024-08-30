@@ -1,8 +1,13 @@
-// ย้ายไป branch edit-file
+// ย้ายไป branch อื่น
 git branch -a
 git checkout -b edit-file
+
+git checkout edit-file
 
 // push file
 git add .   
 git commit -m "ข้อความ"
 git push origin edit-file
+
+// pull file
+git pull origin edit-file
