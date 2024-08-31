@@ -20,9 +20,7 @@ body {
     background-color: var(--body-white);
 }
 
-div {
-    background-color: var(--white);
-}
+
 
 /* i.fas {
     font-weight: 500;
