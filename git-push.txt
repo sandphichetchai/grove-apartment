@@ -1,4 +1,13 @@
-git add . (หรือชื่อไฟล์)
+// ย้ายไป branch อื่น
+git branch -a
+git checkout -b edit-file
+
+git checkout edit-file
+
+// push file
+git add .   
 git commit -m "ข้อความ"
-git push -u origin main
-git push -f origin main (ถ้า -u error)
+git push origin edit-file
+
+// pull file
+git pull origin edit-file

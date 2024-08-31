@@ -1,0 +1,121 @@
+.carousel-caption {
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  color: white;
+  text-align: center;
+}
+
+.carousel-caption h2 {
+  font-size: 3.333vw;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  margin-bottom: 20px;
+}
+
+.carousel-caption a {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.carousel-caption a:hover {
+  background-color: #0056b3;
+}
+
+#a {
+  text-decoration: none;
+}
+
+.card {
+  border-radius: 0;
+  width: 250px;
+  height: 85px;
+  text-align: center;
+}
+
+.carousel-indicators {
+  display: none;
+}
+
+.menu-overlay {
+  position: relative;
+  top: -50px;
+  z-index: 1;
+}
+
+.testimonial-section {
+  display: flex;
+  align-items: center;
+}
+.testimonial-img {
+  padding: 0;
+  max-width: 100%;
+  height: 100%;
+}
+.testimonial-text {
+  padding: 30px;
+}
+.testimonial-text blockquote {
+  font-size: 1.2rem;
+  position: relative;
+  padding-left: 50px;
+}
+.testimonial-text blockquote::before {
+  content: "“";
+  font-size: 4rem; /* ขนาดของเครื่องหมาย " */
+  color: #ff7f00; /* เปลี่ยนสีได้ตามต้องการ */
+  position: absolute;
+  left: 0;
+  top: -10px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+}
+
+.pagination span {
+  margin-right: 10px;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  border: 1px solid #ddd;
+  margin: 0 4px;
+  border-radius: 4px;
+}
+
+.pagination a:hover:not(.active) {
+  background-color: #ddd;
+}
+
+.pagination a.active {
+  background-color: #446c1c;
+  color: white;
+  border: 1px solid #446c1c;
+}
+
+.page-item.active .page-link {
+  background-color: #446c1c;
+  border-color: #446c1c;
+  color: white;
+}
+
+.page-item.disabled .page-link {
+  background-color: transparent;
+  border: none;
+  color: black;
+}
