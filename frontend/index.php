@@ -21,45 +21,45 @@ require 'top-nav.php';
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 
     <style>
-        #guest-options {
-            border: 4px var(--green) solid;
-        }
+    #guest-options {
+        border: 4px var(--green) solid;
+    }
 
-        .guest-btn {
-            width: 35px;
-            height: 35px;
-            text-align: center;
-            font-size: 20px;
-            font-weight: 600;
-            padding: 0;
-            border: none;
-            border-radius: 100%;
-            color: #fff;
-            background-color: var(--green);
-        }
+    .guest-btn {
+        width: 35px;
+        height: 35px;
+        text-align: center;
+        font-size: 20px;
+        font-weight: 600;
+        padding: 0;
+        border: none;
+        border-radius: 100%;
+        color: #fff;
+        background-color: var(--green);
+    }
 
-        .flatpickr-calendar {
-            width: 100%;
-            z-index: 9999;
-            top: 100% !important;
-            left: 0 !important;
-            border-radius: 0;
-            background-color: #fff;
-        }
+    .flatpickr-calendar {
+        width: 100%;
+        z-index: 9999;
+        top: 100% !important;
+        left: 0 !important;
+        border-radius: 0;
+        background-color: #fff;
+    }
 
-        .flatpickr-day:hover,
-        .flatpickr-day:focus {
-            background-color: #b3d4fc;
-            /* เปลี่ยนสีเมื่อเลื่อนเมาส์ */
-        }
+    .flatpickr-day:hover,
+    .flatpickr-day:focus {
+        background-color: #b3d4fc;
+        /* เปลี่ยนสีเมื่อเลื่อนเมาส์ */
+    }
 
-        .flatpickr-day.selected,
-        .flatpickr-day.startRange,
-        .flatpickr-day.endRange {
-            background-color: #4a90e2;
-            /* เปลี่ยนสีของวันที่ที่ถูกเลือก */
-            color: #fff;
-        }
+    .flatpickr-day.selected,
+    .flatpickr-day.startRange,
+    .flatpickr-day.endRange {
+        background-color: #4a90e2;
+        /* เปลี่ยนสีของวันที่ที่ถูกเลือก */
+        color: #fff;
+    }
     </style>
 
 </head>
@@ -72,7 +72,6 @@ require 'top-nav.php';
     <div class="container-fluid px-0 mt-0">
         <div id="carouselExampleIndicators" class="carousel slide">
             <div class="carousel-indicators">
-
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
                     aria-current="true" aria-label="Slide 1"></button>
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
@@ -82,33 +81,27 @@ require 'top-nav.php';
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="assets/img/commu.jpg" class="d-block w-100" alt="...">
+                    <img src="assets/img/commu.jpg" class="d-block w-100" style="aspect-ratio:16/9;" alt="...">
                     <div class="carousel-caption">
-                        <h2>Grove Apartment</h2>
-
+                        <h2>Groove Apartment</h2>
                         <a href="#" target="_blank">Visit Room</a>
                     </div>
                 </div>
                 <div class="carousel-item">
-
-                    <img src="assets/img/commu.jpg" class="d-block w-100" alt="...">
+                    <img src="assets/img/commu.jpg" class="d-block w-100" style="aspect-ratio:16/9;" alt="...">
                     <div class="carousel-caption">
-                        <h2>Groove Room 1</h2>
-
+                        <h2>Groove Room</h2>
                         <a href="#">Visit Website</a>
                     </div>
                 </div>
                 <div class="carousel-item">
-
-                    <img src="assets/img/commu.jpg" class="d-block w-100" alt="...">
+                    <img src="assets/img/commu.jpg" class="d-block w-100" style="aspect-ratio:16/9;" alt="...">
                     <div class="carousel-caption">
-                        <h2>Groove Room 2</h2>
-
+                        <h2>Groove Room</h2>
                         <a href="#">Visit Website</a>
                     </div>
                 </div>
             </div>
-
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
                 data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -116,7 +109,6 @@ require 'top-nav.php';
             </button>
             <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
                 data-bs-slide="next">
-
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
             </button>
@@ -124,7 +116,6 @@ require 'top-nav.php';
     </div>
 
     <!------------------------------------------------------------------ Menu ------------------------------------------------------------------>
-
     <div class="container-fluid menu-overlay d-flex justify-content-center">
 
         <div class="d-flex flex-row w-100" role="group">
@@ -179,7 +170,6 @@ require 'top-nav.php';
                 </div>
             </div>
 
-
             <a class="text text-white text-center" href="#" style="text-decoration: none; flex-grow: 1;">
                 <div class="card text-white" style="background-color: var(--green); width: 100%;">
                     <p class="my-auto">Book Now</p>
@@ -191,130 +181,72 @@ require 'top-nav.php';
     <!------------------------------------------------------------------ Content ------------------------------------------------------------------>
     <div class="container pt-2 pb-5 text-center">
         <h1 class="section-title">Welcome To Groove Apartment</h1>
-
         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illo hic eligendi voluptatem inventore doloremque
             totam architecto deleniti! Aperiam deserunt nobis vel quas natus. Architecto ex illum dolor reprehenderit
             saepe rem!</p>
-
-        <a class="btn" href="#">Learn More</a>
+        <a class="btn btn-success" href="#">Learn More</a>
     </div>
 
     <!------------------------------------------------------------------- About ------------------------------------------------------------------->
-
-    <div class="container-fluid bg-white d-flex px-0">
-        <div class="col-md-6 testimonial-text my-auto">
-            <h3 class="section-title-left text-start">About Us</h3>
-            <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusamus eaque consequatur blanditiis rem
-                magnam laudantium unde vero itaque eveniet, impedit veritatis temporibus ducimus est optio perspiciatis.
-                Natus ipsa officiis rerum.
-            </p>
-            <a class="btn" href="#">Learn More</a>
-        </div>
-        <div class="col-md-6">
-            <img src="assets/img/IMG_9010.jpg" alt="Scenic view" class="testimonial-img">
-
+    <div class="container-fluid bg-white px-0">
+        <div class="row">
+            <div class="col-md-6 col-sm-1 testimonial-text my-auto">
+                <h3 class="section-title-left text-start">About Us</h3>
+                <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusamus eaque consequatur blanditiis rem
+                    magnam laudantium unde vero itaque eveniet, impedit veritatis temporibus ducimus est optio
+                    perspiciatis. Natus ipsa officiis rerum.
+                </p>
+                <a class="btn btn-success" href="#">Learn More</a>
+            </div>
+            <div class="col-md-6 col-sm-1">
+                <img src="assets/img/IMG_9010.jpg" alt="Scenic view" class="testimonial-img">
+            </div>
         </div>
     </div>
 
     <!------------------------------------------------------------------- Our Rooms ------------------------------------------------------------------->
-    <div class="container-fluid py-4 px-0">
+    <div class="container-fluid  py-4 px-0">
         <div class="container text-center">
             <h1 class="section-title">Our Rooms</h1>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium cumque quas, beatae, necessitatibus
                 officiis consectetur nisi in modi atque sit repellendus velit nemo, consequatur doloremque ab. Ullam
                 magnam nulla voluptates.</p>
         </div>
-        <!-- Card Slider -->
-        <div class="container-fluid mt-5">
-            <div class="swiper mySwiper">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="card shadow">
-                            <img src="assets/img/front.jpeg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title text-start">Room 1</h5>
-                                <hr>
-                                <p class="card-text text-start">Some quick example text to build on the card title and
-                                    make
-                                    up the bulk of the card's content.</p>
-
-                                <a class="btn float-start text-white" href="room-detail.php">500 บาท /
-                                    คืน</a>
-                                <a href="#" class="text-decoration-none text-black float-end pt-2">View Room <i
-                                        class="fa-solid fa-chevron-right" style="color: #333; font-size: 14px;"></i></a>
-                            </div>
+        <!-- Card -->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-12 mb-4 d-flex justify-content-center">
+                    <div class="card shadow" style="width: 24rem; height:auto">
+                        <img src="assets/img/front.jpeg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title text-start">Room 1</h5>
+                            <hr>
+                            <p class="card-text text-start">Some quick example text to build on the card title and make
+                                up the bulk of the card's content.</p>
+                            <a href="#" class="btn float-start text-white" style="background-color: #446c1c;">500 บาท /
+                                คืน</a>
+                            <a href="#" class="text-decoration-none text-black float-end pt-2">View Room ></a>
                         </div>
                     </div>
-                    <div class="swiper-slide">
-                        <div class="card shadow">
-                            <img src="assets/img/front.jpeg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title text-start">Room 2</h5>
-                                <hr>
-                                <p class="card-text text-start">Some quick example text to build on the card title and
-                                    make
-                                    up the bulk of the card's content.</p>
-                                <a class="btn float-start text-white" href="room-detail.php">500 บาท /
-                                    คืน</a>
-                                <a href="#" class="text-decoration-none text-black float-end pt-2">View Room <i
-                                        class="fa-solid fa-chevron-right" style="color: #333; font-size: 14px;"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card shadow">
-                            <img src="assets/img/front.jpeg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title text-start">Room 3</h5>
-                                <hr>
-                                <p class="card-text text-start">Some quick example text to build on the card title and
-                                    make
-                                    up the bulk of the card's content.</p>
-                                <a class="btn float-start text-white" href="room-detail.php">500 บาท /
-                                    คืน</a>
-                                <a href="#" class="text-decoration-none text-black float-end pt-2">View Room <i
-                                        class="fa-solid fa-chevron-right" style="color: #333; font-size: 14px;"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card shadow">
-                            <img src="assets/img/front.jpeg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title text-start">Room 4</h5>
-                                <hr>
-                                <p class="card-text text-start">Some quick example text to build on the card title and
-                                    make
-                                    up the bulk of the card's content.</p>
-                                <a class="btn float-start text-white" href="room-detail.php">500 บาท /
-                                    คืน</a>
-                                <a href="#" class="text-decoration-none text-black float-end pt-2">View Room <i
-                                        class="fa-solid fa-chevron-right" style="color: #333; font-size: 14px;"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card shadow">
-                            <img src="assets/img/front.jpeg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title text-start">Room 5</h5>
-                                <hr>
-                                <p class="card-text text-start">Some quick example text to build on the card title and
-                                    make
-                                    up the bulk of the card's content.</p>
-                                <a class="btn float-start text-white" href="room-detail.php">500 บาท /
-                                    คืน</a>
-                                <a href="#" class="text-decoration-none text-black float-end pt-2">View Room <i
-                                        class="fa-solid fa-chevron-right" style="color: #333; font-size: 14px;"></i></a>
-                            </div>
+                </div>
+                <div class="col-lg-6 col-md-12 mb-4 d-flex justify-content-center">
+                    <div class="card shadow" style="width: 24rem; height:auto">
+                        <img src="assets/img/front.jpeg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title text-start">Room 2</h5>
+                            <hr>
+                            <p class="card-text text-start">Some quick example text to build on the card title and make
+                                up the bulk of the card's content.</p>
+                            <a href="#" class="btn float-start text-white" style="background-color: #446c1c;">500 บาท /
+                                คืน</a>
+                            <a href="#" class="text-decoration-none text-black float-end pt-2">View Room ></a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 
     <!------------------------------------------------------------------- Blog ------------------------------------------------------------------->
     <div class="container-fluid bg-white d-flex px-0">
@@ -323,11 +255,8 @@ require 'top-nav.php';
         </div>
         <div class="col-md-6 testimonial-text my-auto">
             <blockquote class="blockquote">
-
-                <p class="mb-0">We enjoyed our stay at Luxurious hotel greatly, the staff were friendly and
-                    attentive to
+                <p class="mb-0">We enjoyed our stay at Luxurious hotel greatly, the staff were friendly and attentive to
                     every one of our needs.</p>
-
                 <footer class="blockquote-footer pt-4">Olivia Simons</footer>
             </blockquote>
         </div>
@@ -338,86 +267,29 @@ require 'top-nav.php';
         <div class="container">
             <p class="section-title">Spacial Offers</p>
         </div>
-
-        <!-- Card Slider -->
-        <div class="container-fluid mt-5">
-            <div class="swiper mySwiper">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="card shadow">
-                            <img src="assets/img/IMG_9010.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title text-start">Room 1</h5>
-                                <hr>
-                                <p class="card-text text-start mb-0"><i class="fa-solid fa-tag"
-                                        style="color: var(--green); margin-right: .5rem;"></i>20% of August
-                                    booking for couples</p>
-
-                                <a href="#" class="text-decoration-none text-black float-end pt-2">View Room <i
-                                        class="fa-solid fa-chevron-right" style="color: #333; font-size: 14px;"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card shadow">
-                            <img src="assets/img/IMG_9010.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title text-start">Room 2</h5>
-                                <hr>
-                                <p class="card-text text-start mb-0"><i class="fa-solid fa-tag"
-                                        style="color: var(--green); margin-right: .5rem;"></i></i>10% off families in
-                                    march</p>
-
-                                <a href="#" class="text-decoration-none text-black float-end pt-2">View Room <i
-                                        class="fa-solid fa-chevron-right" style="color: #333; font-size: 14px;"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card shadow">
-                            <img src="assets/img/IMG_9010.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title text-start">Room 3</h5>
-                                <hr>
-                                <p class="card-text text-start mb-0"><i class="fa-solid fa-tag"
-                                        style="color: var(--green); margin-right: .5rem;"></i></i>20% of August
-                                    booking for couples</p>
-
-                                <a href="#" class="text-decoration-none text-black float-end pt-2">View Room <i
-                                        class="fa-solid fa-chevron-right" style="color: #333; font-size: 14px;"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card shadow">
-                            <img src="assets/img/IMG_9010.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title text-start">Room 4</h5>
-                                <hr>
-                                <p class="card-text text-start mb-0"><i class="fa-solid fa-tag"
-                                        style="color: var(--green); margin-right: .5rem;"></i></i>1 Adult is free when
-                                    booking in July</p>
-
-                                <a href="#" class="text-decoration-none text-black float-end pt-2">View Room <i
-                                        class="fa-solid fa-chevron-right" style="color: #333; font-size: 14px;"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="card shadow">
-                            <img src="assets/img/IMG_9010.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title text-start">Room 5</h5>
-                                <hr>
-                                <p class="card-text text-start mb-0"><i class="fa-solid fa-tag"
-                                        style="color: var(--green); margin-right: .5rem;"></i></i>10% off families in
-                                    march</p>
-
-                                <a href="#" class="text-decoration-none text-black float-end pt-2">View Room <i
-                                        class="fa-solid fa-chevron-right" style="color: #333; font-size: 14px;"></i></a>
-                            </div>
-                        </div>
-                    </div>
+        <div class="container card-group jusify-content-center">
+            <div class="col-lg-4 col-sm-1 card shadow ms-auto" style="width: 14rem; height:auto">
+                <img src="assets/img/IMG_9010.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title text-start">Card title</h5>
+                    <hr>
+                    <p class="card-text text-start">1 Adult is free when booking in July</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-1 card shadow mx-2" style="width: 14rem; height:auto">
+                <img src="assets/img/IMG_9010.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title text-start">Card title</h5>
+                    <hr>
+                    <p class="card-text text-start">10% off families in march</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-1 card shadow ms-auto" style="width: 14rem; height:auto">
+                <img src="assets/img/IMG_9010.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title text-start">Card title</h5>
+                    <hr>
+                    <p class="card-text text-start">20% of August booking for couples</p>
                 </div>
             </div>
         </div>
@@ -429,24 +301,12 @@ require 'top-nav.php';
             <div>
                 <h1>Book online today and look forward to a relaxing stay with us</h1>
                 <p>Watch our video tour now and imagine yourself here</p>
-
-                <a href="#" class="play-icon" id="play-video">
-
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="play-icon">
                     <i class="fa fa-play"></i>
                 </a>
             </div>
         </div>
     </div>
-
-    <!-- Popup สำหรับวิดีโอ -->
-    <div id="video-popup" class="video-popup">
-        <iframe id="youtube-video" src="" frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen></iframe>
-    </div>
-
-    <!-- พื้นหลังที่มืดลง -->
-    <div id="overlay" class="overlay"></div>
 
     <!------------------------------------------------------------------- Facilities ------------------------------------------------------------------->
     <div class="container-fluid py-4 px-0">
@@ -456,56 +316,48 @@ require 'top-nav.php';
                 <div class="col-md-6 mb-4">
                     <div class="facility-card">
                         <div class="facility-icon">
-                            <i class="fas fa-city" style="color: var(--green);"></i>
+                            <i class="fas fa-city"></i>
                         </div>
                         <div>
                             <div class="facility-title">City Views</div>
-
                             <div class="facility-description">Proin felis mauris, fermentum non condimentum id,
                                 porttitor in nisl curabitur euismod convallis.</div>
-
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 mb-4">
                     <div class="facility-card">
                         <div class="facility-icon">
-                            <i class="fas fa-swimming-pool" style="color: var(--green);"></i>
+                            <i class="fas fa-swimming-pool"></i>
                         </div>
                         <div>
                             <div class="facility-title">Swimming Pool</div>
-
                             <div class="facility-description">Proin felis mauris, fermentum non condimentum id,
                                 porttitor in nisl curabitur euismod convallis.</div>
-
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 mb-4">
                     <div class="facility-card">
                         <div class="facility-icon">
-                            <i class="fas fa-compass" style="color: var(--green);"></i>
+                            <i class="fas fa-compass"></i>
                         </div>
                         <div>
                             <div class="facility-title">South Facing</div>
-
                             <div class="facility-description">Proin felis mauris, fermentum non condimentum id,
                                 porttitor in nisl curabitur euismod convallis.</div>
-
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 mb-4">
                     <div class="facility-card">
                         <div class="facility-icon">
-                            <i class="fas fa-subway" style="color: var(--green);"></i>
+                            <i class="fas fa-subway"></i>
                         </div>
                         <div>
                             <div class="facility-title">Subway Nearby</div>
-
                             <div class="facility-description">Proin felis mauris, fermentum non condimentum id,
                                 porttitor in nisl curabitur euismod convallis.</div>
-
                         </div>
                     </div>
                 </div>
@@ -521,26 +373,27 @@ require 'top-nav.php';
         <div class="container">
             <!-- Gallery -->
             <div class="row">
-                <div class="gallery-content col-lg-4 col-md-12 mb-4 mb-lg-0">
-                    <img src="assets/img/IMG_9010.jpg" class="w-100 shadow-1-strong shadow mb-4"
+                <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
+                    <img src="assets/img/IMG_9010.jpg" class="w-100 shadow-1-strong rounded shadow mb-4"
                         alt="Boat on Calm Water" />
 
-                    <img src="assets/img/commu.jpg" class="w-100 shadow-1-strong shadow mb-4"
+                    <img src="assets/img/commu.jpg" class="w-100 shadow-1-strong rounded shadow mb-4"
                         alt="Wintry Mountain Landscape" />
                 </div>
 
-                <div class="gallery-content col-lg-4 mb-4 mb-lg-0">
-                    <img src="assets/img/IMG_9010.jpg" class="w-100 shadow-1-strong shadow mb-4"
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <img src="assets/img/IMG_9010.jpg" class="w-100 shadow-1-strong rounded shadow mb-4"
                         alt="Mountains in the Clouds" />
 
-                    <img src="assets/img/commu.jpg" class="w-100 shadow-1-strong shadow mb-4"
+                    <img src="assets/img/commu.jpg" class="w-100 shadow-1-strong rounded shadow mb-4"
                         alt="Boat on Calm Water" />
                 </div>
 
-                <div class="gallery-content col-lg-4 mb-4 mb-lg-0">
-                    <img src="assets/img/IMG_9010.jpg" class="w-100 shadow-1-strong shadow mb-4" alt="Waves at Sea" />
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <img src="assets/img/IMG_9010.jpg" class="w-100 shadow-1-strong rounded shadow mb-4"
+                        alt="Waves at Sea" />
 
-                    <img src="assets/img/commu.jpg" class="w-100 shadow-1-strong shadow mb-4"
+                    <img src="assets/img/commu.jpg" class="w-100 shadow-1-strong rounded shadow mb-4"
                         alt="Yosemite National Park" />
                 </div>
             </div>
@@ -549,137 +402,137 @@ require 'top-nav.php';
     </div>
 
     <script>
-        // input date
-        document.addEventListener('DOMContentLoaded', function() {
-            var labelDateIn = document.getElementById('label-datein');
-            var labelDateOut = document.getElementById('label-dateout');
-            var inputDateIn = document.getElementById('input-datein');
-            var inputDateOut = document.getElementById('input-dateout');
+    // input date
+    document.addEventListener('DOMContentLoaded', function() {
+        var labelDateIn = document.getElementById('label-datein');
+        var labelDateOut = document.getElementById('label-dateout');
+        var inputDateIn = document.getElementById('input-datein');
+        var inputDateOut = document.getElementById('input-dateout');
 
-            // ใช้ Flatpickr กับ inputDateIn
-            flatpickr(inputDateIn, {
-                onChange: function(selectedDates, dateStr, instance) {
-                    labelDateIn.textContent = 'Check In: ' +
-                        dateStr; // อัปเดต label ด้วยวันที่ที่เลือก
-                },
-                appendTo: labelDateIn.closest('.card'), // ให้ปฏิทินอยู่ใต้ .card
-                positionElement: labelDateIn.closest('.card') // กำหนดตำแหน่งปฏิทิน
-            });
-
-            // ใช้ Flatpickr กับ inputDateOut
-            flatpickr(inputDateOut, {
-                onChange: function(selectedDates, dateStr, instance) {
-                    labelDateOut.textContent = 'Check Out: ' +
-                        dateStr;
-                },
-                appendTo: labelDateOut.closest('.card'), // ให้ปฏิทินอยู่ใต้ .card
-                positionElement: labelDateOut.closest('.card') // กำหนดตำแหน่งปฏิทิน
-            });
-
-            // แสดงปฏิทินเมื่อคลิกที่ labelDateIn
-            labelDateIn.addEventListener('click', function() {
-                event.preventDefault(); // ป้องกันการดีฟอลต์ที่อาจทำให้เกิดการเลื่อนหน้า
-                inputDateIn._flatpickr.open();
-            });
-
-            // แสดงปฏิทินเมื่อคลิกที่ labelDateOut
-            labelDateOut.addEventListener('click', function() {
-                event.preventDefault();
-                inputDateOut._flatpickr.open();
-            });
-        });
-
-        // input guest number
-        document.getElementById('guest-label').addEventListener('click', function() {
-            var guestOptions = document.getElementById('guest-options');
-
-            event.preventDefault();
-
-            if (guestOptions.style.display === 'none' || guestOptions.style.display === '') {
-                guestOptions.style.display = 'block';
-            } else {
-                guestOptions.style.display = 'none';
-            }
-        });
-
-        document.getElementById('guest-ok-btn').addEventListener('click', function() {
-            event.preventDefault();
-            document.getElementById('guest-options').style.display = 'none';
-        });
-
-        function updateGuestCount(type, change) {
-            var countElement = document.getElementById(type + '-count');
-            var count = parseInt(countElement.textContent);
-            count = Math.max(0, count + change);
-            countElement.textContent = count;
-            updateTotalGuests();
-        }
-
-        function updateTotalGuests() {
-            var adultCount = parseInt(document.getElementById('adult-count').textContent);
-            var childCount = parseInt(document.getElementById('child-count').textContent);
-            var totalGuests = adultCount + childCount;
-            document.getElementById('guest-count').textContent = totalGuests + ' Guest(s)';
-        }
-    </script>
-
-    <script>
-        // card slider
-        var swiper = new Swiper(".mySwiper", {
-            slidesPerView: 3, // 3 cards per view (33.33% width each)
-            spaceBetween: 30,
-            loop: false,
-            grabCursor: true,
-            breakpoints: {
-                0: {
-                    slidesPerView: 1, // 1 card per view for screens min-width: 0px
-                },
-                768: {
-                    slidesPerView: 2, // 2 cards per view for screens min-width: 768px
-                },
-                1024: {
-                    slidesPerView: 3, // 3 cards per view for screens min-width: 1024px
-                }
+        // ใช้ Flatpickr กับ inputDateIn
+        flatpickr(inputDateIn, {
+            onChange: function(selectedDates, dateStr, instance) {
+                labelDateIn.textContent = 'Check In: ' +
+                    dateStr; // อัปเดต label ด้วยวันที่ที่เลือก
             },
+            appendTo: labelDateIn.closest('.card'), // ให้ปฏิทินอยู่ใต้ .card
+            positionElement: labelDateIn.closest('.card') // กำหนดตำแหน่งปฏิทิน
         });
+
+        // ใช้ Flatpickr กับ inputDateOut
+        flatpickr(inputDateOut, {
+            onChange: function(selectedDates, dateStr, instance) {
+                labelDateOut.textContent = 'Check Out: ' +
+                    dateStr;
+            },
+            appendTo: labelDateOut.closest('.card'), // ให้ปฏิทินอยู่ใต้ .card
+            positionElement: labelDateOut.closest('.card') // กำหนดตำแหน่งปฏิทิน
+        });
+
+        // แสดงปฏิทินเมื่อคลิกที่ labelDateIn
+        labelDateIn.addEventListener('click', function() {
+            event.preventDefault(); // ป้องกันการดีฟอลต์ที่อาจทำให้เกิดการเลื่อนหน้า
+            inputDateIn._flatpickr.open();
+        });
+
+        // แสดงปฏิทินเมื่อคลิกที่ labelDateOut
+        labelDateOut.addEventListener('click', function() {
+            event.preventDefault();
+            inputDateOut._flatpickr.open();
+        });
+    });
+
+    // input guest number
+    document.getElementById('guest-label').addEventListener('click', function() {
+        var guestOptions = document.getElementById('guest-options');
+
+        event.preventDefault();
+
+        if (guestOptions.style.display === 'none' || guestOptions.style.display === '') {
+            guestOptions.style.display = 'block';
+        } else {
+            guestOptions.style.display = 'none';
+        }
+    });
+
+    document.getElementById('guest-ok-btn').addEventListener('click', function() {
+        event.preventDefault();
+        document.getElementById('guest-options').style.display = 'none';
+    });
+
+    function updateGuestCount(type, change) {
+        var countElement = document.getElementById(type + '-count');
+        var count = parseInt(countElement.textContent);
+        count = Math.max(0, count + change);
+        countElement.textContent = count;
+        updateTotalGuests();
+    }
+
+    function updateTotalGuests() {
+        var adultCount = parseInt(document.getElementById('adult-count').textContent);
+        var childCount = parseInt(document.getElementById('child-count').textContent);
+        var totalGuests = adultCount + childCount;
+        document.getElementById('guest-count').textContent = totalGuests + ' Guest(s)';
+    }
     </script>
 
     <script>
-        // show video
-        document.getElementById('play-video').addEventListener('click', function(event) {
-            event.preventDefault();
-            const videoPopup = document.getElementById('video-popup');
-            const overlay = document.getElementById('overlay');
-            const youtubeVideo = document.getElementById('youtube-video');
+    // card slider
+    var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 3, // 3 cards per view (33.33% width each)
+        spaceBetween: 30,
+        loop: false,
+        grabCursor: true,
+        breakpoints: {
+            0: {
+                slidesPerView: 1, // 1 card per view for screens min-width: 0px
+            },
+            768: {
+                slidesPerView: 2, // 2 cards per view for screens min-width: 768px
+            },
+            1024: {
+                slidesPerView: 3, // 3 cards per view for screens min-width: 1024px
+            }
+        },
+    });
+    </script>
 
-            // แสดง popup และ overlay
-            videoPopup.style.display = 'block';
-            overlay.style.display = 'block';
+    <script>
+    // show video
+    document.getElementById('play-video').addEventListener('click', function(event) {
+        event.preventDefault();
+        const videoPopup = document.getElementById('video-popup');
+        const overlay = document.getElementById('overlay');
+        const youtubeVideo = document.getElementById('youtube-video');
 
-            // ใช้ setTimeout เพื่อรอให้ popup ปรากฏก่อน แล้วเปลี่ยนค่า opacity
-            setTimeout(function() {
-                videoPopup.classList.add('show');
-            }, 10); // ใช้ค่า delay เล็กน้อยเพื่อให้ transition มีผล
+        // แสดง popup และ overlay
+        videoPopup.style.display = 'block';
+        overlay.style.display = 'block';
 
-            // ตั้งค่า URL ของวิดีโอ YouTube ที่จะเล่น
-            youtubeVideo.src = 'https://www.youtube.com/embed/YBdekGSC68A?autoplay=0';
-        });
+        // ใช้ setTimeout เพื่อรอให้ popup ปรากฏก่อน แล้วเปลี่ยนค่า opacity
+        setTimeout(function() {
+            videoPopup.classList.add('show');
+        }, 10); // ใช้ค่า delay เล็กน้อยเพื่อให้ transition มีผล
 
-        document.getElementById('overlay').addEventListener('click', function() {
-            const videoPopup = document.getElementById('video-popup');
-            const youtubeVideo = document.getElementById('youtube-video');
+        // ตั้งค่า URL ของวิดีโอ YouTube ที่จะเล่น
+        youtubeVideo.src = 'https://www.youtube.com/embed/YBdekGSC68A?autoplay=0';
+    });
 
-            // ลบคลาส .show เพื่อให้เกิด transition ซ่อน popup
-            videoPopup.classList.remove('show');
+    document.getElementById('overlay').addEventListener('click', function() {
+        const videoPopup = document.getElementById('video-popup');
+        const youtubeVideo = document.getElementById('youtube-video');
 
-            // ตั้ง timeout เพื่อรอให้ transition เสร็จสิ้นก่อนซ่อน popup และ overlay
-            setTimeout(function() {
-                videoPopup.style.display = 'none';
-                document.getElementById('overlay').style.display = 'none';
-                // หยุดการเล่นวิดีโอ
-                youtubeVideo.src = '';
-            }, 500);
-        });
+        // ลบคลาส .show เพื่อให้เกิด transition ซ่อน popup
+        videoPopup.classList.remove('show');
+
+        // ตั้ง timeout เพื่อรอให้ transition เสร็จสิ้นก่อนซ่อน popup และ overlay
+        setTimeout(function() {
+            videoPopup.style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+            // หยุดการเล่นวิดีโอ
+            youtubeVideo.src = '';
+        }, 500);
+    });
     </script>
 
 </body>
