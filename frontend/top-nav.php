@@ -5,18 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- custom css -->
+    <!-- Custom Css -->
     <link rel="stylesheet" href="assets/css/setting.css">
     <link rel="stylesheet" href="assets/css/top-nav.css">
 
-    <!-- icon -->
+    <!-- Icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
-    <!-- bootstrap -->
+    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-    <!-- aos animation -->
+    <!-- Sweet Alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Aos Animation -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 
@@ -94,10 +97,10 @@
     </div>
 
     <script>
-        document.querySelector('.hamburger').addEventListener('click', () => {
-            document.querySelector('.mobile-menu').classList.toggle('active');
-            document.querySelector('.hamburger').classList.toggle('active');
-        });
+    document.querySelector('.hamburger').addEventListener('click', () => {
+        document.querySelector('.mobile-menu').classList.toggle('active');
+        document.querySelector('.hamburger').classList.toggle('active');
+    });
     </script>
 
     <!-- bootstrap -->
