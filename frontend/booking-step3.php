@@ -3,19 +3,70 @@ include '../connect.php';
 include 'top-nav.php';
 
 // Initialize variables
-$checkIn = isset($_GET['input-datein']) ? $_GET['input-datein'] : 'no';
-$checkOut = isset($_GET['input-dateout']) ? $_GET['input-dateout'] : 'no';
-$guest = isset($_GET['guest-count']) ? $_GET['guest-count'] : 0;
-$adult = isset($_GET['adult-count']) ? $_GET['adult-count'] : 0;
-$child = isset($_GET['child-count']) ? $_GET['child-count'] : 0;
-$total = isset($_GET['total']) ? $_GET['total'] : 0;
+$checkIn = isset($_POST['checkIn']) ? $_POST['checkIn'] : 'none';
+$checkOut = isset($_POST['checkOut']) ? $_POST['checkOut'] : 'none';
+$adult = isset($_POST['adult']) ? $_POST['adult'] : 'none';
+$child = isset($_POST['child']) ? $_POST['child'] : 'none';
 
-$roomNumber = isset($_GET['roomNumber']) ? $_GET['roomNumber'] : 'no';
-$roomSize = isset($_GET['roomSize']) ? $_GET['roomSize'] : 'no';
-$roomCapacity = isset($_GET['roomCapacity']) ? $_GET['roomCapacity'] : 'no';
-$roomBoardType = isset($_GET['roomBoardType']) ? $_GET['roomBoardType'] : 'no';
-$roomPrice = isset($_GET['roomPrice']) ? $_GET['roomPrice'] : 'no';
-$removeRoom = isset($_GET['removeRoom']) ? $_GET['removeRoom'] : 'no';
+$guest = isset($_GET['guest-count']) ? $_GET['guest-count'] : 'none';
+$total = isset($_GET['total']) ? $_GET['total'] : 'none';
+
+$roomNumber = isset($_GET['roomNumber']) ? $_GET['roomNumber'] : 00;
+$roomSize = isset($_GET['roomSize']) ? $_GET['roomSize'] : 00;
+$roomCapacity = isset($_GET['roomCapacity']) ? $_GET['roomCapacity'] : 00;
+$roomBoardType = isset($_GET['roomBoardType']) ? $_GET['roomBoardType'] : 00;
+$roomPrice = isset($_GET['roomPrice']) ? $_GET['roomPrice'] : 00;
+$removeRoom = isset($_GET['removeRoom']) ? $_GET['removeRoom'] : 00;
+
+// Handle form submission
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+    if (isset($_GET['nextStep'])) {
+        // Debug output
+        error_log('Redirecting to booking-step2.php with parameters: ' . http_build_query([
+            'checkIn' => $checkIn,
+            'checkOut' => $checkOut,
+            'guest' => $guest,
+            'adult' => $adult,
+            'child' => $child,
+            'total' => $total,
+            'roomNumber' => $roomNumber,
+            'roomSize' => $roomSize,
+            'roomCapacity' => $roomCapacity,
+            'roomBoardType' => $roomBoardType,
+            'roomPrice' => $roomPrice,
+            'removeRoom' => $removeRoom
+        ]));
+
+        // Redirect to booking-step2.php with the current data
+        header('Location: booking-step2.php?' . http_build_query([
+            'checkIn' => $checkIn,
+            'checkOut' => $checkOut,
+            'guest' => $guest,
+            'adult' => $adult,
+            'child' => $child,
+            'total' => $total,
+            'roomNumber' => $roomNumber,
+            'roomSize' => $roomSize,
+            'roomCapacity' => $roomCapacity,
+            'roomBoardType' => $roomBoardType,
+            'roomPrice' => $roomPrice,
+            'removeRoom' => $removeRoom
+
+        ]));
+        exit; // Ensure no further code is executed
+    } elseif (isset($_GET['prevStep'])) {
+        // Redirect to booking-step1.php with the current data
+        header('Location: booking-step1.php?' . http_build_query([
+            'checkIn' => $checkIn,
+            'checkOut' => $checkOut,
+            'guest' => $guest,
+            'adult' => $adult,
+            'child' => $child,
+            'total' => $total
+        ]));
+        exit; // Ensure no further code is executed
+    }
+}
 
 // Perform database query after redirection logic
 $stmt = $conn->prepare("SELECT * FROM tb_room WHERE room_capacity >= :guest");
@@ -23,7 +74,10 @@ $stmt->bindParam(':guest', $guest, PDO::PARAM_INT);
 $stmt->execute();
 $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-echo "checkIn " . $checkIn . " &checkOut " . $checkOut . " &guest " . $guest . " &adult " . $adult . " &child " . $child . " &total " . $total;
+// Display data (this should be after the redirection logic)
+
+echo "checkIn " . $checkIn . " & " . $checkOut . " &g " . $guest . " &a " . $adult . " &c " . $child . " &t " . $total;
+echo "<br>roomNumber " .$roomNumber . " &roomSize " . $roomSize . " &roomCapacity " . $roomCapacity . " &roomBoardType " . $roomBoardType . " &roomPrice " . $roomPrice . " &removeRoom " . $removeRoom;
 ?>
 
 <!DOCTYPE html>
@@ -32,46 +86,9 @@ echo "checkIn " . $checkIn . " &checkOut " . $checkOut . " &guest " . $guest . "
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hotel Booking Step 1</title>
+    <title>Hotel Booking Step 2</title>
     <link rel="stylesheet" href="assets/css/setting.css">
     <link rel="stylesheet" href="assets/css/booking.css">
-
-    <!-- flatpickr JS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-
-    <style>
-    .flatpickr-innerContainer {
-        justify-content: center;
-    }
-
-    .flatpickr-calendar {
-        width: 200%;
-        z-index: 9999;
-        top: 100% !important;
-        left: 0 !important;
-        border-radius: 0;
-        background-color: #fff;
-    }
-
-    .flatpickr-day:hover,
-    .flatpickr-day:focus {
-        background-color: #b3d4fc;
-        /* เปลี่ยนสีเมื่อเลื่อนเมาส์ */
-    }
-
-    .flatpickr-day.selected,
-    .flatpickr-day.startRange,
-    .flatpickr-day.endRange {
-        background-color: #4a90e2;
-        /* เปลี่ยนสีของวันที่ที่ถูกเลือก */
-        color: #fff;
-    }
-
-    .right-side #roomSelect hr:last-child {
-        display: none !important;
-    }
-    </style>
 </head>
 
 <body>
@@ -82,9 +99,9 @@ echo "checkIn " . $checkIn . " &checkOut " . $checkOut . " &guest " . $guest . "
 
             <div class="container mt-5">
                 <div class="step-indicator d-flex justify-content-around">
-                    <div class="step completed">
+                    <div class="step">
                         <a href="booking-step1.php">
-                            <div class="circle active" id="step-one">1</div>
+                            <div class="circle" id="step-one">1</div>
                         </a>
                         <div class="label">Rooms</div>
                     </div>
@@ -94,9 +111,9 @@ echo "checkIn " . $checkIn . " &checkOut " . $checkOut . " &guest " . $guest . "
                         </a>
                         <div class="label">Payment</div>
                     </div>
-                    <div class="step">
+                    <div class="step completed">
                         <a href="#">
-                            <div class="circle" id="step-three">3</div>
+                            <div class="circle active" id="step-three">3</div>
                         </a>
                         <div class="label">Complete</div>
                     </div>
@@ -104,8 +121,8 @@ echo "checkIn " . $checkIn . " &checkOut " . $checkOut . " &guest " . $guest . "
             </div>
 
             <div class="container menu-overlay d-flex justify-content-center px-0">
-                <form method="get" class="booking-group shadow w-100 d-flex flex-row bg-white mt-5" role="group"
-                    id="roomFilterForm">
+                <form method="get" action="#" class="booking-group shadow w-100 d-flex flex-row bg-white mt-5"
+                    role="group" id="roomFilterForm">
 
                     <div class="booking-check card d-flex flex-column justify-content-center align-items-center"
                         style="flex: 1 1 25%;">
@@ -117,8 +134,7 @@ echo "checkIn " . $checkIn . " &checkOut " . $checkOut . " &guest " . $guest . "
                         </label>
 
                         <input type="date" class="booking-input form-control my-auto" id="input-datein"
-                            name="input-datein" value="<?php echo htmlspecialchars($checkIn); ?>"
-                            style="display: none;">
+                            name="input-datein" value="" style="display: none;">
                     </div>
 
                     <div class="booking-check card d-flex flex-column justify-content-center align-items-center"
@@ -131,8 +147,7 @@ echo "checkIn " . $checkIn . " &checkOut " . $checkOut . " &guest " . $guest . "
                         </label>
 
                         <input type="date" class="booking-input form-control my-auto" id="input-dateout"
-                            name="input-dateout" value="<?php echo htmlspecialchars($checkOut); ?>"
-                            style="display: none;">
+                            name="input-dateout" value="" style="display: none;">
                     </div>
 
                     <div class="booking-check card d-flex flex-column justify-content-center align-items-center"
@@ -229,10 +244,6 @@ echo "checkIn " . $checkIn . " &checkOut " . $checkOut . " &guest " . $guest . "
 
                         <div class="card-footer d-flex mt-4 gap-3">
                             <a class="btn text-white py-3 px-5 room-select-btn" href="#"
-                                data-room-checkIn="<?= htmlspecialchars($checkIn) ?>"
-                                data-room-checkOut="<?= htmlspecialchars($checkOut) ?>"
-                                data-room-adult="<?= htmlspecialchars($adult) ?>"
-                                data-room-child="<?= htmlspecialchars($child) ?>"
                                 data-room-id="<?= htmlspecialchars($row['room_id']) ?>"
                                 data-room-number="<?= htmlspecialchars($row['room_number']) ?>"
                                 data-room-size="<?= htmlspecialchars($row['room_size']) ?>"
@@ -256,10 +267,6 @@ echo "checkIn " . $checkIn . " &checkOut " . $checkOut . " &guest " . $guest . "
 
                         <div class="card-footer d-flex mt-4 gap-3">
                             <a class="btn text-white py-3 px-5 room-select-btn" href="#"
-                                data-room-checkIn="<?= htmlspecialchars($checkIn) ?>"
-                                data-room-checkOut="<?= htmlspecialchars($checkOut) ?>"
-                                data-room-adult="<?= htmlspecialchars($adult) ?>"
-                                data-room-child="<?= htmlspecialchars($child) ?>"
                                 data-room-id="<?= htmlspecialchars($row['room_id']) ?>"
                                 data-room-number="<?= htmlspecialchars($row['room_number']) ?>"
                                 data-room-size="<?= htmlspecialchars($row['room_size']) ?>"
@@ -283,24 +290,48 @@ echo "checkIn " . $checkIn . " &checkOut " . $checkOut . " &guest " . $guest . "
         <section class="right-side container" style="flex: 1 1 35%;">
 
             <div class="card shadow h-auto mb-4">
-                <form method="post" action="booking-step2.php">
+                <form method="post" action="booking-step3.php">
                     <div class="card-header">
                         <h5 class="card-title">Your Stay</h5>
                     </div>
 
                     <div class="card-body">
-                        <div id="guestDefault">
-                            <p class="card-text">Dates: <?php echo $checkIn . " - " . $checkOut ?></p>
-                            <p class="card-text">Guests: <?php echo $adult . " Adult , " . $child . " Child" ?></p>
-                            <input type="hidden" name="checkIn" value="<?php echo $checkIn; ?>">
-                            <input type="hidden" name="checkOut" value="<?php echo $checkOut; ?>">
-                            <input type="hidden" name="adult" value="<?php echo $adult; ?>">
-                            <input type="hidden" name="child" value="<?php echo $child; ?>">
+                        <p class="card-text">Dates:
+                            <?php echo htmlspecialchars($checkIn) . " - " . htmlspecialchars($checkOut); ?></p>
+                        <p class="card-text">Guests:
+                            <?php echo htmlspecialchars($adult) . " Adult, " . htmlspecialchars($child) . " Child"; ?>
+                        </p>
+
+                        <div id="roomSelect">
+
+                            <?php
+                            // if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                            //     // รับข้อมูลจาก POST
+                            //     $checkIn = htmlspecialchars($_POST['checkIn']);
+                            //     $checkOut = htmlspecialchars($_POST['checkOut']);
+                            //     $adult = htmlspecialchars($_POST['adult']);
+                            //     $child = htmlspecialchars($_POST['child']);
+                            //     $rooms = $_POST['rooms']; // รับ array ของ rooms
+
+                            //     // แสดงข้อมูล
+                            //     echo "Check-in: " . $checkIn . "<br>";
+                            //     echo "Check-out: " . $checkOut . "<br>";
+                            //     echo "Guests: " . $adult . " Adult, " . $child . " Child<br><br>";
+
+                            //     // แสดงรายละเอียดห้องพัก
+                            //     foreach ($rooms as $room) {
+                            //         echo "Room ID: " . htmlspecialchars($room['roomId']) . "<br>";
+                            //         echo "Room Number: " . htmlspecialchars($room['roomNumber']) . "<br>";
+                            //         echo "Size: " . htmlspecialchars($room['roomSize']) . " sqm<br>";
+                            //         echo "Capacity: " . htmlspecialchars($room['roomCapacity']) . " Adults<br>";
+                            //         echo "Board Type: " . htmlspecialchars($room['boardType']) . "<br>";
+                            //         echo "Price: ฿ " . htmlspecialchars($room['price']) . "<br><br>";
+                            //     }
+                            // } else {
+                            //     echo "No data received.";
+                            // }
+                            ?>
                         </div>
-
-                        <div id="roomSelect"></div>
-
-                        <div id="roomInputs"></div>
                     </div>
 
                     <div class="card-footer px-3 py-3">
@@ -308,11 +339,13 @@ echo "checkIn " . $checkIn . " &checkOut " . $checkOut . " &guest " . $guest . "
                             <h5 class="card-title">Total</h5>
                             <input type="text" class="card-title"
                                 style="font-size: 18px; text-align: right; background: transparent" id="totalPrice"
-                                name="totalPrice" value="฿ <?php echo $total ?>" readonly>
+                                name="totalPrice" value="<?php echo $total ?>" readonly>
                         </div>
-                        <div class="footer-nextstep d-flex justify-content-end">
-                            <input type="submit" class="btn w-50" id="next-step-btn" name="nextStep" value="Next"
-                                style="display: none; color: #fff; background-color: var(--green);">
+                        <div class="footer-nextstep d-flex gap-2">
+                            <input type="submit" class="btn w-50" id="prev-step-btn" name="prevStep" value="Prev Step"
+                                style="color: var(--green); background-color: #fff; border: 2px var(--green) solid !important">
+                            <input type="submit" class="btn w-50" id="next-step-btn" name="nextStep" value="Next Step"
+                                style="color: #fff; background-color: var(--green);">
                         </div>
                     </div>
                 </form>

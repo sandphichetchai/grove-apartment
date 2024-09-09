@@ -2,40 +2,67 @@
 include '../connect.php';
 include 'top-nav.php';
 
-// Initialize variables
-$checkIn = isset($_GET['checkIn']) ? $_GET['checkIn'] : 'no check in';
-$checkOut = isset($_GET['checkOut']) ? $_GET['checkOut'] : 'no check out';
-$guest = isset($_GET['guest']) ? $_GET['guest'] : 0;
-$adult = isset($_GET['adult']) ? $_GET['adult'] : 0;
-$child = isset($_GET['child']) ? $_GET['child'] : 0;
-$total = isset($_GET['total']) ? $_GET['total'] : 0;
+$checkIn = isset($_POST['checkIn']) ? $_POST['checkIn'] : 'none';
+$checkOut = isset($_POST['checkOut']) ? $_POST['checkOut'] : 'none';
+$adult = isset($_POST['adult']) ? $_POST['adult'] : 'none';
+$child = isset($_POST['child']) ? $_POST['child'] : 'none';
+
+// $roomNumber = isset($_GET['roomNumber']) ? $_GET['roomNumber'] : 00;
+// $roomSize = isset($_GET['roomSize']) ? $_GET['roomSize'] : 00;
+// $roomCapacity = isset($_GET['roomCapacity']) ? $_GET['roomCapacity'] : 00;
+// $roomBoardType = isset($_GET['roomBoardType']) ? $_GET['roomBoardType'] : 00;
+// $roomPrice = isset($_GET['roomPrice']) ? $_GET['roomPrice'] : 00;
+// $removeRoom = isset($_GET['removeRoom']) ? $_GET['removeRoom'] : 00;
 
 // Handle form submission
-if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-    if (isset($_GET['nextStep'])) {
-        // Redirect to booking-step2.php with the current data
-        header('Location: booking-step2.php?' . http_build_query([
-            'checkIn' => $checkIn,
-            'checkOut' => $checkOut,
-            'guest' => $guest,
-            'adult' => $adult,
-            'child' => $child,
-            'total' => $total
-        ]));
-        exit; // Ensure no further code is executed
-    } elseif (isset($_GET['prevStep'])) {
-        // Redirect to booking-step1.php with the current data
-        header('Location: booking-step1.php?' . http_build_query([
-            'checkIn' => $checkIn,
-            'checkOut' => $checkOut,
-            'guest' => $guest,
-            'adult' => $adult,
-            'child' => $child,
-            'total' => $total
-        ]));
-        exit; // Ensure no further code is executed
-    }
-}
+// if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+//     if (isset($_GET['nextStep'])) {
+//         // Debug output
+//         error_log('Redirecting to booking-step2.php with parameters: ' . http_build_query([
+//             'checkIn' => $checkIn,
+//             'checkOut' => $checkOut,
+//             'guest' => $guest,
+//             'adult' => $adult,
+//             'child' => $child,
+//             'total' => $total,
+//             'roomNumber' => $roomNumber,
+//             'roomSize' => $roomSize,
+//             'roomCapacity' => $roomCapacity,
+//             'roomBoardType' => $roomBoardType,
+//             'roomPrice' => $roomPrice,
+//             'removeRoom' => $removeRoom
+//         ]));
+
+//         // Redirect to booking-step2.php with the current data
+//         header('Location: booking-step2.php?' . http_build_query([
+//             'checkIn' => $checkIn,
+//             'checkOut' => $checkOut,
+//             'guest' => $guest,
+//             'adult' => $adult,
+//             'child' => $child,
+//             'total' => $total,
+//             'roomNumber' => $roomNumber,
+//             'roomSize' => $roomSize,
+//             'roomCapacity' => $roomCapacity,
+//             'roomBoardType' => $roomBoardType,
+//             'roomPrice' => $roomPrice,
+//             'removeRoom' => $removeRoom
+
+//         ]));
+//         exit; // Ensure no further code is executed
+//     } elseif (isset($_GET['prevStep'])) {
+//         // Redirect to booking-step1.php with the current data
+//         header('Location: booking-step1.php?' . http_build_query([
+//             'checkIn' => $checkIn,
+//             'checkOut' => $checkOut,
+//             'guest' => $guest,
+//             'adult' => $adult,
+//             'child' => $child,
+//             'total' => $total
+//         ]));
+//         exit; // Ensure no further code is executed
+//     }
+// }
 
 // Perform database query after redirection logic
 $stmt = $conn->prepare("SELECT * FROM tb_room WHERE room_capacity >= :guest");
@@ -43,9 +70,8 @@ $stmt->bindParam(':guest', $guest, PDO::PARAM_INT);
 $stmt->execute();
 $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// Display data (this should be after the redirection logic)
-
-echo $checkIn . " & " . $checkOut . " &g " . $guest . " &a " . $adult . " &c " . $child . " &t " . $total;
+// echo "checkIn " . $checkIn . " & " . $checkOut . " &g " . $guest . " &a " . $adult . " &c " . $child . " &t " . $total;
+// echo "<br>roomNumber " .$roomNumber . " &roomSize " . $roomSize . " &roomCapacity " . $roomCapacity . " &roomBoardType " . $roomBoardType . " &roomPrice " . $roomPrice . " &removeRoom " . $removeRoom;
 ?>
 
 <!DOCTYPE html>
@@ -54,40 +80,23 @@ echo $checkIn . " & " . $checkOut . " &g " . $guest . " &a " . $adult . " &c " .
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hotel Booking Step 1</title>
+    <title>Hotel Booking Step 2</title>
     <link rel="stylesheet" href="assets/css/setting.css">
     <link rel="stylesheet" href="assets/css/booking.css">
 
-    <!-- flatpickr JS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-
     <style>
-    .flatpickr-innerContainer {
-        justify-content: center;
+    .form-control,
+    .form-select {
+        border-radius: 0 !important;
     }
 
-    .flatpickr-calendar {
-        width: 200%;
-        z-index: 9999;
-        top: 100% !important;
-        left: 0 !important;
-        border-radius: 0;
-        background-color: #fff;
+    input.form-control,
+    .form-select {
+        height: 40px;
     }
 
-    .flatpickr-day:hover,
-    .flatpickr-day:focus {
-        background-color: #b3d4fc;
-        /* เปลี่ยนสีเมื่อเลื่อนเมาส์ */
-    }
-
-    .flatpickr-day.selected,
-    .flatpickr-day.startRange,
-    .flatpickr-day.endRange {
-        background-color: #4a90e2;
-        /* เปลี่ยนสีของวันที่ที่ถูกเลือก */
-        color: #fff;
+    .right-side #roomSelect hr:last-child {
+        display: none !important;
     }
     </style>
 </head>
@@ -100,27 +109,21 @@ echo $checkIn . " & " . $checkOut . " &g " . $guest . " &a " . $adult . " &c " .
 
             <div class="container mt-5">
                 <div class="step-indicator d-flex justify-content-around">
-                    <div class="step completed">
+                    <div class="step">
                         <a href="booking-step1.php">
-                            <div class="circle active" id="step-one">1</div>
+                            <div class="circle" id="step-one">1</div>
                         </a>
                         <div class="label">Rooms</div>
                     </div>
-                    <div class="step">
+                    <div class="step completed">
                         <a href="#">
-                            <div class="circle" id="step-two">2</div>
-                        </a>
-                        <div class="label">Add-Ons</div>
-                    </div>
-                    <div class="step">
-                        <a href="#">
-                            <div class="circle" id="step-three">3</div>
+                            <div class="circle active" id="step-two">2</div>
                         </a>
                         <div class="label">Payment</div>
                     </div>
                     <div class="step">
                         <a href="#">
-                            <div class="circle" id="step-four">4</div>
+                            <div class="circle" id="step-three">3</div>
                         </a>
                         <div class="label">Complete</div>
                     </div>
@@ -128,197 +131,211 @@ echo $checkIn . " & " . $checkOut . " &g " . $guest . " &a " . $adult . " &c " .
             </div>
 
             <div class="container menu-overlay d-flex justify-content-center px-0">
-                <form method="get" action="#" class="booking-group shadow w-100 d-flex flex-row bg-white mt-5"
-                    role="group" id="roomFilterForm">
+                <form method="get" class="booking-group shadow w-100 d-flex flex-row bg-white mt-5" role="group"
+                    id="roomFilterForm">
 
                     <div class="booking-check card d-flex flex-column justify-content-center align-items-center"
                         style="flex: 1 1 25%;">
-                        <label for="input-datein"
-                            class="w-100 h-50 d-flex flex-column justify-content-center align-items-center my-auto"
-                            id="label-datein" style="cursor: pointer; border-right: 2px #dedede solid"><strong>Check
-                                In</strong>
-                            <p class="mb-0"><?php echo $checkIn ?></p>
-                        </label>
 
-                        <input type="date" class="booking-input form-control my-auto" id="input-datein"
-                            name="input-datein" value="" style="display: none;">
                     </div>
 
                     <div class="booking-check card d-flex flex-column justify-content-center align-items-center"
                         style="flex: 1 1 25%;">
-                        <label for="input-dateout"
-                            class="w-100 h-50 d-flex flex-column justify-content-center align-items-center my-auto"
-                            id="label-dateout" style="cursor: pointer; border-right: 2px #dedede solid"><strong>Check
-                                Out</strong>
-                            <p class="mb-0"><?php echo $checkOut ?></p>
-                        </label>
 
-                        <input type="date" class="booking-input form-control my-auto" id="input-dateout"
-                            name="input-dateout" value="" style="display: none;">
                     </div>
 
                     <div class="booking-check card d-flex flex-column justify-content-center align-items-center"
                         style="flex: 1 1 25%;">
-                        <label for="guest-toggle" id="guest-label"
-                            class="w-100 h-50 d-flex flex-column justify-content-center align-items-center my-auto"
-                            style="cursor: pointer; border-right: 2px #dedede solid">
-                            <span><strong>Guests</strong></span>
-                            <span class="text-center" id="guest-count"
-                                style="width: 100px;"><?php echo $guest ?>&nbsp;Guest(s)</span>
-                        </label>
 
-                        <input type="hidden" id="guest-count-hidden" name="guest-count" value="<?php echo $guest ?>">
-
-                        <div class="bg-white p-3" id="guest-options"
-                            style="width: calc(200% + 1px); display: none; position: absolute; top: 100%; left: -1px; z-index: 9998;">
-
-                            <div class="guest-type"
-                                style="display: flex; justify-content: space-between; align-items: center;">
-                                <div class="guest-box">
-                                    <strong>Adult</strong>
-                                    <p style="margin: 0; color: #888;">Ages 13 or above</p>
-                                </div>
-                                <div class="guest-box d-flex align-items-center">
-                                    <button class="guest-btn"
-                                        onclick="event.preventDefault(); updateGuestCount('adult', -1);">-</button>
-                                    <input type="text" id="adult-count" name="adult-count" class="text-center"
-                                        style="width: 25px;" value="<?php echo $adult ?>" readonly>
-                                    <button class="guest-btn"
-                                        onclick="event.preventDefault(); updateGuestCount('adult', 1);">+</button>
-                                </div>
-                            </div>
-
-                            <hr class="w-100">
-
-                            <div class="guest-type"
-                                style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                                <div class="guest-box">
-                                    <strong>Child</strong>
-                                    <p style="margin: 0; color: #888;">Ages 12 or below</p>
-                                </div>
-                                <div class="guest-box d-flex align-items-center">
-                                    <button class="guest-btn"
-                                        onclick="event.preventDefault(); updateGuestCount('child', -1);">-</button>
-                                    <input type="text" id="child-count" name="child-count" class="text-center"
-                                        style="width: 25px;" value="<?php echo $child ?>" readonly>
-                                    <button class="guest-btn"
-                                        onclick="event.preventDefault(); updateGuestCount('child', 1);">+</button>
-                                </div>
-                            </div>
-
-                            <div class="d-flex">
-                                <button class="btn ms-auto" id="guest-ok-btn"
-                                    style="background-color: var(--green);">OK</button>
-                            </div>
-                        </div>
                     </div>
 
                     <div class="booking-check d-flex justify-content-center align-items-center" style="flex: 1 1 25%;">
-                        <input type="submit" class="card text text-white" id="filter-btn" name="filter"
-                            style="width: 80%; height: 65%; background-color: var(--green); border-radius: 0;"
-                            value="Search">
+                        <button type="submit" class="btn btn-sm" id="useCodeBtn"
+                            style="width: 100px; height: 40px; background-color: var(--green);"
+                            name="useCode">ใช้คูปอง</button>
                     </div>
                 </form>
             </div>
 
-            <div id="roomResults" class="container mt-5 px-0">
-                <!-- Filtered rooms will be displayed here -->
-                <?php foreach ($results as $row) { ?>
-
-                <div class="d-flex mb-5">
-                    <div class="card-header me-4">
-                        <img src="assets/img/IMG_9010.jpg" style="width: 300px; aspect-ratio: 4/3" alt="...">
+            <div id="orderForm" class="container mt-5 px-0">
+                <form class="row g-3">
+                    <div class="col-md-6">
+                        <label for="inputFname" class="form-label">ชื่อจริง *</label>
+                        <input type="text" class="form-control" id="inputFname">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputLname" class="form-label">นามสกุล *</label>
+                        <input type="text" class="form-control" id="inputLname">
                     </div>
 
-                    <div class="card-body flex-grow-1">
-                        <h5 class="card-title">room ID: <?= htmlspecialchars($row['room_id']) ?></h5>
-                        <h5 class="card-title">Number: <?= htmlspecialchars($row['room_number']) ?></h5>
-                        <hr>
-                        <p class="card-text">Detail: <?= htmlspecialchars($row['room_detail']) ?></p>
-                        <p class="card-text">Size: <?= htmlspecialchars($row['room_size']) ?></p>
-                        <p class="card-text">Capacity: <?= htmlspecialchars($row['room_capacity']) ?></p>
-                        <p class="card-text">Status: <?= htmlspecialchars($row['rental_status']) ?></p>
-
-                        <hr>
-
-                        <div class="d-flex justify-content-between mb-4">
-                            <h5 class="card-title">Full Board</h5>
-                            <h5 class="card-title"><?= htmlspecialchars("฿ " . $row['fullboard_price']) ?></h5>
-                        </div>
-
-                        <p class="card-text">Nulla non rhoncus metus, nec tincidunt nisl. Mauris lacinia enim diam,
-                            nec porta velit blandit vel vestibulum.</p>
-
-                        <div class="card-footer d-flex mt-4 gap-3">
-                            <a class="btn text-white py-3 px-5 room-select-btn" href="#"
-                                data-room-id="<?= htmlspecialchars($row['room_id']) ?>"
-                                data-room-number="<?= htmlspecialchars($row['room_number']) ?>"
-                                data-room-size="<?= htmlspecialchars($row['room_size']) ?>"
-                                data-room-capacity="<?= htmlspecialchars($row['room_capacity']) ?>"
-                                data-fullboard-price="<?= htmlspecialchars($row['fullboard_price']) ?>"
-                                data-halfboard-price="<?= htmlspecialchars($row['halfboard_price']) ?>"
-                                data-board-type="fullboard">Select</a>
-                            <a href="#" class="text-black align-self-center">View Room
-                                <i class="fa-solid fa-chevron-right" style="color: #333; font-size: 14px;"></i></a>
-                        </div>
-
-
-                        <hr>
-
-                        <div class="d-flex justify-content-between mb-4">
-                            <h5 class="card-title">Half Board</h5>
-                            <h5 class="card-title"><?= htmlspecialchars("฿ " . $row['halfboard_price']) ?></h5>
-                        </div>
-
-                        <p class="card-text">Nulla non rhoncus metus, nec tincidunt nisl. Mauris lacinia enim diam,
-                            nec porta velit blandit vel vestibulum.</p>
-
-                        <div class="card-footer d-flex mt-4 gap-3">
-                            <a class="btn text-white py-3 px-5 room-select-btn" href="#"
-                                data-room-id="<?= htmlspecialchars($row['room_id']) ?>"
-                                data-room-number="<?= htmlspecialchars($row['room_number']) ?>"
-                                data-room-size="<?= htmlspecialchars($row['room_size']) ?>"
-                                data-room-capacity="<?= htmlspecialchars($row['room_capacity']) ?>"
-                                data-fullboard-price="<?= htmlspecialchars($row['fullboard_price']) ?>"
-                                data-halfboard-price="<?= htmlspecialchars($row['halfboard_price']) ?>"
-                                data-board-type="halfboard">Select</a>
-                            <a href="#" class="text-black align-self-center">View Room
-                                <i class="fa-solid fa-chevron-right" style="color: #333; font-size: 14px;"></i></a>
-                        </div>
-
+                    <div class="col-md-12">
+                        <label for="inputCompany" class="form-label">บริษัท (ถ้ามี)</label>
+                        <input type="text" class="form-control" id="inputCompany" placeholder="ABC (Thailand) Co., Ltd">
                     </div>
-                </div>
 
-                <hr class="mb-5">
+                    <div class="col-md-6">
+                        <label for="inputState" class="form-label">ประเทศ *</label>
+                        <input type="text" class="form-control" id="inputState">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputProvince" class="form-label">จังหวัด *</label>
+                        <input type="text" class="form-control" id="inputProvince">
+                    </div>
 
-                <?php } ?>
+                    <div class="col-md-6">
+                        <label for="inputDistrict" class="form-label">เขต / อำเภอ *</label>
+                        <input type="text" class="form-control" id="inputDistrict">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputSubDistrict" class="form-label">แขวง / ตำบล *</label>
+                        <input type="text" class="form-control" id="inputSubDistrict">
+                    </div>
+
+                    <div class="col-md-12">
+                        <label for="inputAddress" class="form-label">ที่อยู่ *</label>
+                        <input type="text" class="form-control" id="inputAddress"
+                            placeholder="10/125 ซอย 5 หมู่บ้านสุขใจ 2">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="inputZip" class="form-label">รหัสไปรษณีย์ *</label>
+                        <input type="text" class="form-control" id="inputZip" placeholder="12400">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="inputTel" class="form-label">
+                            โทรศัพท์ *</label>
+                        <input type="text" class="form-control" id="inputTel">
+                    </div>
+                    <div class="col-md-12">
+                        <label for="inputEmail" class="form-label">
+                            อีเมล *</label>
+                        <input type="text" class="form-control" id="inputEmail" placeholder="info@gmail.com">
+                    </div>
+
+                    <div class="col-md-12">
+                        <label for="moreText" class="form-label">
+                            บันทึกเพิ่มเติม (ถ้ามี)</label>
+                        <textarea type="text" class="form-control" id="inputTextArea" rows="5"></textarea>
+                    </div>
+
+                    <div class="col-md-12">
+                        <p class="w-100 py-2 px-2 mt-3 border border-dark">** ชำระเงินโดยการโอนเงินเข้าบัญชีธนาคาร
+                            โดยหลังการชำระเงิน กรุณาส่งหลักฐานยืนยันพร้อมเลขที่ใบสั่งซื้อ เพื่อดำเนินการส่งของต่อไป **
+                        </p>
+                    </div>
+
+                    <hr>
+
+                    <div class="col-md-12 mt-1">
+                        <p class="w-100">Your personal data will be used to process your order, support your experience
+                            throughout this website, and for other purposes described in our นโยบายความเป็นส่วนตัว.</p>
+                    </div>
+
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary"
+                            style="width: 100px; height: 40px;">สั่งซื้อ</button>
+                    </div>
+                </form>
             </div>
         </section>
 
         <section class="right-side container" style="flex: 1 1 35%;">
 
             <div class="card shadow h-auto mb-4">
-                <form action="#" method="get">
+                <form method="post" action="booking-step3.php">
                     <div class="card-header">
                         <h5 class="card-title">Your Stay</h5>
-                        <!-- <hr style="width: 10%; height: 3px; border: none; background-color: var(--green)"> -->
                     </div>
 
                     <div class="card-body">
-                        <p class="card-text">Dates: <?php echo $checkIn . " - " . $checkOut ?></p>
-                        <p class="card-text">Guests: <?php echo $adult . " Adult , " . $child . " Child" ?></p>
+                        <div id="guestDefault">
+                            <p class="card-text">Dates: <?php echo $checkIn . " - " . $checkOut ?></p>
+                            <p class="card-text">Guests: <?php echo $adult . " Adult , " . $child . " Child" ?></p>
+                            <input type="hidden" name="checkIn" value="<?php echo $checkIn; ?>">
+                            <input type="hidden" name="checkOut" value="<?php echo $checkOut; ?>">
+                            <input type="hidden" name="adult" value="<?php echo $adult; ?>">
+                            <input type="hidden" name="child" value="<?php echo $child; ?>">
+                        </div>
+                        <div id="roomSelect">
+
+                            <?php 
+                            if (isset($_POST['rooms']) && !empty($_POST['rooms'])) {
+                                $rooms = isset($_POST['rooms']) ? $_POST['rooms'] : [];
+                                $total = isset($_POST['totalPrice']) ? $_POST['totalPrice'] : '฿ 0';
+
+                                foreach ($rooms as $index => $room) {
+                                    $checkIn = isset($room['checkIn']) && !empty($room['checkIn']) ? htmlspecialchars($room['checkIn']) : 'none';
+                                    $checkOut = isset($room['checkOut']) && !empty($room['checkOut']) ? htmlspecialchars($room['checkOut']) : 'none';
+                                    $adult = isset($room['adult']) && !empty($room['adult']) ? htmlspecialchars($room['adult']) : 'none';
+                                    $child = isset($room['child']) && !empty($room['child']) ? htmlspecialchars($room['child']) : 'none';
+                                    $roomId = isset($room['roomId']) && !empty($room['roomId']) ? htmlspecialchars($room['roomId']) : 'none';
+                                    $roomNumber = isset($room['roomNumber']) && !empty($room['roomNumber']) ? htmlspecialchars($room['roomNumber']) : 'none';
+                                    $roomSize = isset($room['roomSize']) && !empty($room['roomSize']) ? htmlspecialchars($room['roomSize']) : 'none';
+                                    $roomCapacity = isset($room['roomCapacity']) && !empty($room['roomCapacity']) ? htmlspecialchars($room['roomCapacity']) : 'none';
+                                    $boardType = isset($room['boardType']) && !empty($room['boardType']) ? htmlspecialchars($room['boardType']) : 'none';
+                                    $price = isset($room['price']) && !empty($room['price']) ? htmlspecialchars($room['price']) : 'none';
+                            ?>
+
+                            <div class="card w-100" id="roomCard<?php echo $index; ?>">
+
+                                <p class="card-text">Dates: <?php echo $checkIn . " - " . $checkOut ?></p>
+                                <p class="card-text">Guests: <?php echo $adult . " Adult , " . $child . " Child" ?></p>
+                                <p class="card-text">Room ID: <?php echo $roomId; ?></p>
+                                <p class="card-text">Room Number: <?php echo $roomNumber; ?></p>
+                                <p class="card-text">Size: <?php echo $roomSize; ?> sqm</p>
+                                <p class="card-text">Capacity: <?php echo $roomCapacity; ?> Adults</p>
+                                <p class="card-text">Board Type: <?php echo $boardType; ?></p>
+                                <p class="card-text">Price: ฿ <?php echo $price; ?></p>
+
+                                <button type="button" class="btn btn-danger btn-sm w-100 mb-4 remove-room-btn"
+                                    style="height: 40px;" data-index="<?php echo $index; ?>">Remove</button>
+                            </div>
+
+                            <div id="roomInputs">
+                                <input type="hidden" name="rooms[<?php echo $index; ?>][checkIn]"
+                                    value="<?php echo $checkIn; ?>">
+                                <input type="hidden" name="rooms[<?php echo $index; ?>][checkOut]"
+                                    value="<?php echo $checkOut; ?>">
+                                <input type="hidden" name="rooms[<?php echo $index; ?>][adult]"
+                                    value="<?php echo $adult; ?>">
+                                <input type="hidden" name="rooms[<?php echo $index; ?>][child]"
+                                    value="<?php echo $child; ?>">
+                                <input type="hidden" name="rooms[<?php echo $index; ?>][roomId]"
+                                    value="<?php echo $roomId; ?>">
+                                <input type="hidden" name="rooms[<?php echo $index; ?>][roomNumber]"
+                                    value="<?php echo $roomNumber; ?>">
+                                <input type="hidden" name="rooms[<?php echo $index; ?>][roomSize]"
+                                    value="<?php echo $roomSize; ?>">
+                                <input type="hidden" name="rooms[<?php echo $index; ?>][roomCapacity]"
+                                    value="<?php echo $roomCapacity; ?>">
+                                <input type="hidden" name="rooms[<?php echo $index; ?>][boardType]"
+                                    value="<?php echo $boardType; ?>">
+                                <input type="hidden" name="rooms[<?php echo $index; ?>][price]"
+                                    value="<?php echo $price; ?>" class="room-price">
+                            </div>
+
+                            <?php 
+                                }
+                            } else {
+                                echo '<p>No rooms selected.</p>';
+                            }
+                            ?>
+                        </div>
                     </div>
 
-                    <div class="card-footer">
-                        <div class="footer-total d-flex justify-content-between">
-                            <h6 class="card-title">Total</h6>
-                            <h6 class="card-title"><?php echo "฿ " . $total ?></h6>
+                    <div class="card-footer px-3 py-3">
+                        <div class="footer-total d-flex justify-content-between mt-3 mb-3">
+                            <h5 class="card-title">Total</h5>
+                            <input type="text" class="card-title"
+                                style="font-size: 18px; text-align: right; background: transparent" id="totalPrice"
+                                name="totalPrice" value="<?php echo $total ?>" readonly>
                         </div>
                         <div class="footer-nextstep d-flex gap-2">
-                            <input type="submit" class="btn w-50" id="prev-step-btn" name="prevStep" value="Prev Step"
+                            <input type="submit" class="btn w-50" id="prev-step-btn" name="prevStep" value="Back"
                                 style="color: var(--green); background-color: #fff; border: 2px var(--green) solid !important">
-                            <input type="submit" class="btn w-50" id="next-step-btn" name="nextStep" value="Next Step"
-                                style="display: none; color: #fff; background-color: var(--green);">
+                            <input type="submit" class="btn w-50" id="next-step-btn" name="nextStep" value="Next"
+                                style="color: #fff; background-color: var(--green);">
                         </div>
                     </div>
                 </form>
@@ -350,123 +367,77 @@ echo $checkIn . " & " . $checkOut . " &g " . $guest . " &a " . $adult . " &c " .
         </section>
     </main>
 
-    <script src="assets/js/checkin.js"></script>
+    <script src="assets/js/action-booking.js"></script>
 
     <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const roomSelectBtns = document.querySelectorAll('.room-select-btn');
-        const summaryBox = document.querySelector('.right-side .card-body');
-        const totalBox = document.querySelector(
-            '.right-side .card-footer .footer-total .card-title:last-child');
-        const nextStepBtn = document.getElementById('next-step-btn');
+    document.addEventListener("DOMContentLoaded", () => {
+        const removeButtons = document.querySelectorAll(".remove-room-btn");
+        const totalPriceField = document.getElementById("totalPrice");
+        const guestDefault = document.getElementById("guestDefault");
+        const roomSelect = document.getElementById("roomSelect");
 
-        let selectedRooms = [];
-        let totalPrice = 0;
-        const roomBoardTypeMap = new Map(); // Tracks selected board type for each room
-
-        const updateSummary = () => {
-            summaryBox.innerHTML = '';
-            selectedRooms.forEach((room, index) => {
-                summaryBox.innerHTML += `
-            <p class="card-text">Room Number: ${room.roomNumber}</p>
-            <p class="card-text">Size: ${room.roomSize} sqm</p>
-            <p class="card-text">Capacity: ${room.roomCapacity} Adults</p>
-            <p class="card-text">Board Type: ${room.boardType}</p>
-            <p class="card-text">Price: ฿ ${room.price}</p>
-            <button class="btn btn-danger btn-sm remove-room-btn" data-index="${index}">Remove</button>
-            <hr>
-            `;
+        // Function to update the total price
+        function updateTotalPrice() {
+            let total = 0;
+            document.querySelectorAll(".room-price").forEach(roomPriceField => {
+                total += parseFloat(roomPriceField.value);
             });
+            totalPriceField.value = `฿ ${total.toFixed(0)}`;
+        }
 
-            totalBox.textContent = `฿ ${totalPrice}`;
-
-            // Show or hide "Next Step" button based on selected rooms
-            if (selectedRooms.length > 0) {
-                nextStepBtn.style.display = 'block';
+        // Function to check if there are any room cards left
+        function updateGuestDefaultVisibility() {
+            const roomCards = roomSelect.querySelectorAll(".card");
+            if (roomCards.length > 0) {
+                guestDefault.style.display = "none";
             } else {
-                nextStepBtn.style.display = 'none';
+                guestDefault.style.display = "block";
             }
-        };
+        }
 
-        roomSelectBtns.forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
+        // Attach event listeners to remove buttons
+        removeButtons.forEach((button) => {
+            button.addEventListener("click", (e) => {
+                const roomIndex = e.target.dataset.index;
+                const roomCard = document.getElementById(`roomCard${roomIndex}`);
 
-                const roomId = e.target.dataset.roomId;
-                const roomNumber = e.target.dataset.roomNumber;
-                const roomSize = e.target.dataset.roomSize;
-                const roomCapacity = e.target.dataset.roomCapacity;
-                const fullBoardPrice = parseFloat(e.target.dataset.fullboardPrice);
-                const halfBoardPrice = parseFloat(e.target.dataset.halfboardPrice);
-                const boardType = e.target.dataset.boardType;
+                // SweetAlert confirmation
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        if (roomCard) {
+                            roomCard.remove();
+                        }
 
-                // Determine the price based on board type
-                const price = boardType === 'fullboard' ? fullBoardPrice : halfBoardPrice;
+                        // Remove inputs related to the room
+                        const roomInputs = document.querySelectorAll(
+                            `input[name^="rooms[${roomIndex}]"]`);
+                        roomInputs.forEach(input => input.remove());
 
-                // Check if the room has already been selected with a different board type
-                if (roomBoardTypeMap.has(roomId)) {
-                    const existingBoardType = roomBoardTypeMap.get(roomId);
-                    if (existingBoardType !== boardType) {
-                        // Room has a different board type already selected, so prevent this selection
-                        // alert(
-                        //     `Room ${roomId} already has ${existingBoardType} selected. Please remove the existing selection before adding a new one.`
-                        //     );
-                        return;
+                        // Update total price after room is removed
+                        updateTotalPrice();
+
+                        // Update guestDefault visibility
+                        updateGuestDefaultVisibility();
+
+                        // Show SweetAlert for successful removal
+                        Swal.fire('Deleted!', 'The room has been removed.', 'success');
                     }
-                }
-
-                // Check if the same board type is already selected for the room
-                const existingRoomIndex = selectedRooms.findIndex(room => room.roomId ===
-                    roomId && room.boardType === boardType);
-                if (existingRoomIndex > -1) {
-                    // Same board type is already selected, prevent re-selection
-                    // alert(`Room ${roomId} already has ${boardType} selected.`);
-                    return;
-                }
-
-                // Remove existing selection if it exists
-                const existingRoomIndexToRemove = selectedRooms.findIndex(room => room
-                    .roomId === roomId);
-                if (existingRoomIndexToRemove > -1) {
-                    totalPrice -= selectedRooms[existingRoomIndexToRemove].price;
-                    selectedRooms.splice(existingRoomIndexToRemove, 1);
-                }
-
-                // Add the new room selection
-                selectedRooms.push({
-                    roomId,
-                    roomNumber,
-                    roomSize,
-                    roomCapacity,
-                    boardType,
-                    price
                 });
-                roomBoardTypeMap.set(roomId, boardType);
-                totalPrice += price;
-
-                // Update the summary box with the selected room details
-                updateSummary();
             });
         });
 
-        // Delegated event listener for remove buttons
-        summaryBox.addEventListener('click', (e) => {
-            if (e.target.classList.contains('remove-room-btn')) {
-                const roomIndex = e.target.dataset.index;
-                const roomId = selectedRooms[roomIndex].roomId;
-
-                totalPrice -= selectedRooms[roomIndex].price;
-                selectedRooms.splice(roomIndex, 1);
-
-                // Remove the room from the tracking map if no other rooms with the same ID
-                if (!selectedRooms.some(room => room.roomId === roomId)) {
-                    roomBoardTypeMap.delete(roomId);
-                }
-
-                // Re-render the selected rooms
-                updateSummary();
-            }
-        });
+        // Initial call to check visibility on page load
+        updateGuestDefaultVisibility();
+        // Update the total price on page load
+        updateTotalPrice();
     });
     </script>
 

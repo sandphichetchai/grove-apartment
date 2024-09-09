@@ -103,7 +103,7 @@ a.btn:hover {
     background-color: var(--green);
 }
 
-input {
+input#child-count, input#adult-count, input#totalPrice {
     border: none !important;
     outline: none !important;
 }
@@ -163,12 +163,18 @@ input {
 
 .completed .circle.active {
     color: #fff !important;
-    background-color: var(--green);
-    border: 2px var(--green) solid;
+    background-color: var(--green) !important;
+    border: 2px var(--green) solid !important;
 }
 
-.label {
+.label, span.remove-room-btn  {
     font-size: 14px;
+}
+
+span.remove-room-btn {
+    height: 30px;
+    color: #ff0000;
+    text-decoration: underline;
 }
 
 @media screen and (min-width: 1025px) and (max-width: 1200px) {
