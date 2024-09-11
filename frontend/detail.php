@@ -15,53 +15,53 @@ require 'top-nav.php';
 </head>
 
 <style>
-    .accordion-button::after {
-        display: none;
-    }
+.accordion-button::after {
+    display: none;
+}
 
-    .accordion-button.collapsed .icon-minus {
-        display: none;
-    }
+.accordion-button.collapsed .icon-minus {
+    display: none;
+}
 
-    .accordion-button .icon-plus {
-        display: none;
-    }
+.accordion-button .icon-plus {
+    display: none;
+}
 
-    .accordion-button.collapsed .icon-plus {
-        display: inline-block;
-    }
+.accordion-button.collapsed .icon-plus {
+    display: inline-block;
+}
 
-    .accordion-button .icon-minus {
-        display: inline-block;
-    }
+.accordion-button .icon-minus {
+    display: inline-block;
+}
 
-    .accordion-button {
-        background-color: #edefec;
-        border: none;
-        box-shadow: none;
-        color: #000;
-        font-weight: bold;
-    }
+.accordion-button {
+    background-color: #edefec;
+    border: none;
+    box-shadow: none;
+    color: #000;
+    font-weight: bold;
+}
 
-    .accordion-button:not(.collapsed) {
-        background-color: #edefec !important;
-        color: #000;
-    }
+.accordion-button:not(.collapsed) {
+    background-color: #edefec !important;
+    color: #000;
+}
 
-    .accordion-body {
-        background-color: #edefec;
-        padding-left: 54px;
-        padding-right: 54px;
-    }
+.accordion-body {
+    background-color: #edefec;
+    padding-left: 54px;
+    padding-right: 54px;
+}
 
-    .accordion-item {
-        border: none;
-        /* เอาขอบออก */
-    }
+.accordion-item {
+    border: none;
+    /* เอาขอบออก */
+}
 
-    .accordion-item+.accordion-item {
-        border-top: none;
-    }
+.accordion-item+.accordion-item {
+    border-top: none;
+}
 </style>
 
 <body>
@@ -73,22 +73,29 @@ require 'top-nav.php';
                     <h3 class="text-center">THIS FOR TITLE</h3>
                     <div class="d-flex justify-content-center text-center pt-1">
                         <div>
-                            <p><i class="fa-solid fa-bed mx-2 ps-3" style="color: #446c1c; font-size:20px;"></i>Sleeps: 2 Adults</p>
+                            <p><i class="fa-solid fa-bed mx-2 ps-3" style="color: #446c1c; font-size:20px;"></i>Sleeps:
+                                2 Adults</p>
                         </div>
                         <div>
-                            <p><i class="fa-solid fa-ruler mx-2 ps-3" style="color: #446c1c; font-size:20px;"></i>Size: 35sqm</p>
+                            <p><i class="fa-solid fa-ruler mx-2 ps-3" style="color: #446c1c; font-size:20px;"></i>Size:
+                                35sqm</p>
                         </div>
                         <div>
-                            <p><i class="fas fa-binoculars mx-2 ps-3" style="color: #446c1c; font-size:20px;"></i>City: View</p>
+                            <p><i class="fas fa-binoculars mx-2 ps-3" style="color: #446c1c; font-size:20px;"></i>City:
+                                View</p>
                         </div>
                     </div>
                     <img src="assets/img/commu.jpg" class="mt-3 mb-5" alt="" style="width: 100%; height: 50vh;">
 
                     <!------------------------------------------------------------------- Description ------------------------------------------------------------------->
                     <h4 class="text-center section-title">Room Description</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste dolorum magni sit, odio mollitia, autem molestiae fugiat ad, perspiciatis commodi adipisci deleniti nisi nesciunt incidunt repellendus? Magnam magni quaerat non.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste dolorum magni sit, odio mollitia,
+                        autem molestiae fugiat ad, perspiciatis commodi adipisci deleniti nisi nesciunt incidunt
+                        repellendus? Magnam magni quaerat non.</p>
                     <br>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur perferendis sapiente reiciendis. Dignissimos ratione aliquid, tenetur ea architecto in aut perferendis porro dolore facere ex neque quia, minus sunt esse.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur perferendis sapiente
+                        reiciendis. Dignissimos ratione aliquid, tenetur ea architecto in aut perferendis porro dolore
+                        facere ex neque quia, minus sunt esse.</p>
 
                     <!------------------------------------------------------------------- Facilities ------------------------------------------------------------------->
                     <h4 class="text-center section-title">Facilities</h4>
@@ -136,8 +143,11 @@ require 'top-nav.php';
                             </a>
                         </div>
                     </div>
-                    <div id="video-popup" class="video-popup">
-                        <iframe id="youtube-video" src="" frameborder="0"
+                    <!-- Popup สำหรับวิดีโอ -->
+                    <div id="video-popup">
+                        <iframe id="content-video"
+                            src="https://www.facebook.com/plugins/video.php?href=https://fb.watch/uuy-9e4B1E/?autoplay=0&mute=1"
+                            frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen></iframe>
                     </div>
@@ -150,57 +160,81 @@ require 'top-nav.php';
                     <div class="accordion" id="faqAccordion">
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingOne">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                    <span class="icon-plus"><i class="fa-solid fa-circle-plus pe-2" style="color: #446c1c; font-size:25px;"></i></span>
-                                    <span class="icon-minus"><i class="fa-solid fa-circle-minus pe-2" style="color: #446c1c; font-size:25px;"></i></span>
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                    <span class="icon-plus"><i class="fa-solid fa-circle-plus pe-2"
+                                            style="color: #446c1c; font-size:25px;"></i></span>
+                                    <span class="icon-minus"><i class="fa-solid fa-circle-minus pe-2"
+                                            style="color: #446c1c; font-size:25px;"></i></span>
                                     My flight arrives early in the morning, what time can I check in?
                                 </button>
                             </h2>
-                            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                                data-bs-parent="#faqAccordion">
                                 <div class="accordion-body">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent et rhoncus neque. Maecenas enim nunc, dapibus in mattis eleifend, luctus et magna. Maecenas nunc est, posuere sed convallis tincidunt.</p>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent et rhoncus
+                                        neque. Maecenas enim nunc, dapibus in mattis eleifend, luctus et magna. Maecenas
+                                        nunc est, posuere sed convallis tincidunt.</p>
                                 </div>
                             </div>
                         </div>
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingTwo">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    <span class="icon-plus"><i class="fa-solid fa-circle-plus pe-2" style="color: #446c1c; font-size:25px;"></i></span>
-                                    <span class="icon-minus"><i class="fa-solid fa-circle-minus pe-2" style="color: #446c1c; font-size:25px;"></i></span>
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    <span class="icon-plus"><i class="fa-solid fa-circle-plus pe-2"
+                                            style="color: #446c1c; font-size:25px;"></i></span>
+                                    <span class="icon-minus"><i class="fa-solid fa-circle-minus pe-2"
+                                            style="color: #446c1c; font-size:25px;"></i></span>
                                     Is breakfast included as standard with all rooms?
                                 </button>
                             </h2>
-                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                data-bs-parent="#faqAccordion">
                                 <div class="accordion-body">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent et rhoncus neque. Maecenas enim nunc, dapibus in mattis eleifend, luctus et magna. Maecenas nunc est, posuere sed convallis tincidunt.</p>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent et rhoncus
+                                        neque. Maecenas enim nunc, dapibus in mattis eleifend, luctus et magna. Maecenas
+                                        nunc est, posuere sed convallis tincidunt.</p>
                                 </div>
                             </div>
                         </div>
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingThree">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                    <span class="icon-plus"><i class="fa-solid fa-circle-plus pe-2" style="color: #446c1c; font-size:25px;"></i></span>
-                                    <span class="icon-minus"><i class="fa-solid fa-circle-minus pe-2" style="color: #446c1c; font-size:25px;"></i></span>
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    <span class="icon-plus"><i class="fa-solid fa-circle-plus pe-2"
+                                            style="color: #446c1c; font-size:25px;"></i></span>
+                                    <span class="icon-minus"><i class="fa-solid fa-circle-minus pe-2"
+                                            style="color: #446c1c; font-size:25px;"></i></span>
                                     Do you provide a child day care service?
                                 </button>
                             </h2>
-                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                                data-bs-parent="#faqAccordion">
                                 <div class="accordion-body">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent et rhoncus neque. Maecenas enim nunc, dapibus in mattis eleifend, luctus et magna. Maecenas nunc est, posuere sed convallis tincidunt.</p>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent et rhoncus
+                                        neque. Maecenas enim nunc, dapibus in mattis eleifend, luctus et magna. Maecenas
+                                        nunc est, posuere sed convallis tincidunt.</p>
                                 </div>
                             </div>
                         </div>
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingFour">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                    <span class="icon-plus"><i class="fa-solid fa-circle-plus pe-2" style="color: #446c1c; font-size:25px;"></i></span>
-                                    <span class="icon-minus"><i class="fa-solid fa-circle-minus pe-2" style="color: #446c1c; font-size:25px;"></i></span>
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                    <span class="icon-plus"><i class="fa-solid fa-circle-plus pe-2"
+                                            style="color: #446c1c; font-size:25px;"></i></span>
+                                    <span class="icon-minus"><i class="fa-solid fa-circle-minus pe-2"
+                                            style="color: #446c1c; font-size:25px;"></i></span>
                                     Are airport pickups available for late night flight arrivals?
                                 </button>
                             </h2>
-                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
+                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                                data-bs-parent="#faqAccordion">
                                 <div class="accordion-body">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent et rhoncus neque. Maecenas enim nunc, dapibus in mattis eleifend, luctus et magna. Maecenas nunc est, posuere sed convallis tincidunt.</p>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent et rhoncus
+                                        neque. Maecenas enim nunc, dapibus in mattis eleifend, luctus et magna. Maecenas
+                                        nunc est, posuere sed convallis tincidunt.</p>
                                 </div>
                             </div>
                         </div>
@@ -215,7 +249,9 @@ require 'top-nav.php';
                 <!------------------------------------------------------------------- เมนูจองด้านขวา ------------------------------------------------------------------->
                 <!-- ยังไม่ได้ทำ -->
                 <div class="row">
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus veniam amet sit officia temporibus consectetur velit. Necessitatibus, sapiente suscipit culpa fugit sed rerum vitae placeat neque dicta totam magni voluptatem?</p>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus veniam amet sit officia
+                        temporibus consectetur velit. Necessitatibus, sapiente suscipit culpa fugit sed rerum vitae
+                        placeat neque dicta totam magni voluptatem?</p>
                 </div>
 
                 <!------------------------------------------------------------------- Assistance ------------------------------------------------------------------->
@@ -224,15 +260,20 @@ require 'top-nav.php';
                         <h4 class="section-title-left">
                             Need Assistance?
                         </h4>
-                        <P>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates mollitia fugiat maiores quos ducimus sed aliquid deserunt enim saepe, architecto labore eum aspernatur, error assumenda adipisci hic est consectetur repudiandae!</P>
+                        <P>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates mollitia fugiat maiores
+                            quos ducimus sed aliquid deserunt enim saepe, architecto labore eum aspernatur, error
+                            assumenda adipisci hic est consectetur repudiandae!</P>
                         <div class="d-flex">
-                            <p><i class="fa-solid fa-location-dot pe-3" style="color: #446c1c; font-size:25px;"></i>55 Columbus Circle, New York, NY</p>
+                            <p><i class="fa-solid fa-location-dot pe-3" style="color: #446c1c; font-size:25px;"></i>55
+                                Columbus Circle, New York, NY</p>
                         </div>
                         <div class="d-flex pt-1">
-                            <p><i class="fa-solid fa-phone pe-3" style="color: #446c1c; font-size:20px;"></i>1111-2222-3333</p>
+                            <p><i class="fa-solid fa-phone pe-3"
+                                    style="color: #446c1c; font-size:20px;"></i>1111-2222-3333</p>
                         </div>
                         <div class="d-flex pt-1">
-                            <p><i class="fa-solid fa-envelope pe-3" style="color: #446c1c; font-size:20px;"></i>booking@example.com</p>
+                            <p><i class="fa-solid fa-envelope pe-3"
+                                    style="color: #446c1c; font-size:20px;"></i>booking@example.com</p>
                         </div>
                     </div>
                 </div>
@@ -252,75 +293,75 @@ require 'top-nav.php';
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var dateInput = document.getElementById('side_date');
+    document.addEventListener('DOMContentLoaded', function() {
+        var dateInput = document.getElementById('side_date');
 
-            // เมื่อมีการคลิกที่อินพุต, ให้เรียกใช้งาน open() เพื่อเปิดปฏิทิน
-            dateInput.addEventListener('click', function() {
-                this.showPicker();
-            });
+        // เมื่อมีการคลิกที่อินพุต, ให้เรียกใช้งาน open() เพื่อเปิดปฏิทิน
+        dateInput.addEventListener('click', function() {
+            this.showPicker();
         });
+    });
     </script>
 
     <script>
-        var swiper = new Swiper(".mySwiper", {
-            slidesPerView: 3, // 3 cards per view (33.33% width each)
-            spaceBetween: 30,
-            loop: false,
-            grabCursor: true,
-            breakpoints: {
-                0: {
-                    slidesPerView: 1, // 1 card per view for smaller screens
-                },
-                768: {
-                    slidesPerView: 2, // 2 cards per view for medium screens
-                },
-                1024: {
-                    slidesPerView: 3, // 3 cards per view for larger screens
-                }
+    var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 3, // 3 cards per view (33.33% width each)
+        spaceBetween: 30,
+        loop: false,
+        grabCursor: true,
+        breakpoints: {
+            0: {
+                slidesPerView: 1, // 1 card per view for smaller screens
             },
-        });
+            768: {
+                slidesPerView: 2, // 2 cards per view for medium screens
+            },
+            1024: {
+                slidesPerView: 3, // 3 cards per view for larger screens
+            }
+        },
+    });
     </script>
 
     <script>
-        document.getElementById('play-video').addEventListener('click', function(event) {
-            event.preventDefault();
-            const videoPopup = document.getElementById('video-popup');
-            const overlay = document.getElementById('overlay');
-            const youtubeVideo = document.getElementById('youtube-video');
+    // show video
+    // document.getElementById('play-video').addEventListener('click', function(event) {
+    //     event.preventDefault();
+    //     const videoPopup = document.getElementById('video-popup');
+    //     const overlay = document.getElementById('overlay');
+    //     const contentVideo = document.getElementById('content-video');
 
-            // แสดง popup และ overlay
-            videoPopup.style.display = 'block';
-            overlay.style.display = 'block';
+    //     // แสดง popup และ overlay
+    //     videoPopup.style.display = 'block';
+    //     overlay.style.display = 'block';
 
-            // ใช้ setTimeout เพื่อรอให้ popup ปรากฏก่อน แล้วเปลี่ยนค่า opacity
-            setTimeout(function() {
-                videoPopup.classList.add('show');
-            }, 10); // ใช้ค่า delay เล็กน้อยเพื่อให้ transition มีผล
+    //     // ใช้ setTimeout เพื่อรอให้ popup ปรากฏก่อน แล้วเปลี่ยนค่า opacity
+    //     setTimeout(function() {
+    //         videoPopup.classList.add('show');
+    //     }, 10); // ใช้ค่า delay เล็กน้อยเพื่อให้ transition มีผล
 
-            // ตั้งค่า URL ของวิดีโอ YouTube ที่จะเล่น
-            youtubeVideo.src = 'https://www.youtube.com/embed/YBdekGSC68A?autoplay=0';
-        });
+    //     // ตั้งค่า URL ของวิดีโอ YouTube ที่จะเล่น
+    //     contentVideo.src =
+    //         'https://www.facebook.com/plugins/video.php?href=https://fb.watch/uuy-9e4B1E/?autoplay=0&mute=1';
+    // });
 
-        document.getElementById('overlay').addEventListener('click', function() {
-            const videoPopup = document.getElementById('video-popup');
-            const youtubeVideo = document.getElementById('youtube-video');
+    // document.getElementById('overlay').addEventListener('click', function() {
+    //     const videoPopup = document.getElementById('video-popup');
+    //     const contentVideo = document.getElementById('content-video');
 
-            // ลบคลาส .show เพื่อให้เกิด transition ซ่อน popup
-            videoPopup.classList.remove('show');
+    //     // ลบคลาส .show เพื่อให้เกิด transition ซ่อน popup
+    //     videoPopup.classList.remove('show');
 
-            // ตั้ง timeout เพื่อรอให้ transition เสร็จสิ้นก่อนซ่อน popup และ overlay
-            setTimeout(function() {
-                videoPopup.style.display = 'none';
-                document.getElementById('overlay').style.display = 'none';
-                // หยุดการเล่นวิดีโอ
-                youtubeVideo.src = '';
-            }, 500);
-        });
+    //     // ตั้ง timeout เพื่อรอให้ transition เสร็จสิ้นก่อนซ่อน popup และ overlay
+    //     setTimeout(function() {
+    //         videoPopup.style.display = 'none';
+    //         document.getElementById('overlay').style.display = 'none';
+    //         // หยุดการเล่นวิดีโอ
+    //         contentVideo.src = '';
+    //     }, 500);
+    // });
     </script>
 </body>
 
 </html>
-<?php
-require 'footer.php';
-?>
+<?php require 'footer.php'; ?>

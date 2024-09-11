@@ -7,71 +7,12 @@ $checkOut = isset($_POST['checkOut']) ? $_POST['checkOut'] : 'none';
 $adult = isset($_POST['adult']) ? $_POST['adult'] : 'none';
 $child = isset($_POST['child']) ? $_POST['child'] : 'none';
 
-// $roomNumber = isset($_GET['roomNumber']) ? $_GET['roomNumber'] : 00;
-// $roomSize = isset($_GET['roomSize']) ? $_GET['roomSize'] : 00;
-// $roomCapacity = isset($_GET['roomCapacity']) ? $_GET['roomCapacity'] : 00;
-// $roomBoardType = isset($_GET['roomBoardType']) ? $_GET['roomBoardType'] : 00;
-// $roomPrice = isset($_GET['roomPrice']) ? $_GET['roomPrice'] : 00;
-// $removeRoom = isset($_GET['removeRoom']) ? $_GET['removeRoom'] : 00;
-
-// Handle form submission
-// if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-//     if (isset($_GET['nextStep'])) {
-//         // Debug output
-//         error_log('Redirecting to booking-step2.php with parameters: ' . http_build_query([
-//             'checkIn' => $checkIn,
-//             'checkOut' => $checkOut,
-//             'guest' => $guest,
-//             'adult' => $adult,
-//             'child' => $child,
-//             'total' => $total,
-//             'roomNumber' => $roomNumber,
-//             'roomSize' => $roomSize,
-//             'roomCapacity' => $roomCapacity,
-//             'roomBoardType' => $roomBoardType,
-//             'roomPrice' => $roomPrice,
-//             'removeRoom' => $removeRoom
-//         ]));
-
-//         // Redirect to booking-step2.php with the current data
-//         header('Location: booking-step2.php?' . http_build_query([
-//             'checkIn' => $checkIn,
-//             'checkOut' => $checkOut,
-//             'guest' => $guest,
-//             'adult' => $adult,
-//             'child' => $child,
-//             'total' => $total,
-//             'roomNumber' => $roomNumber,
-//             'roomSize' => $roomSize,
-//             'roomCapacity' => $roomCapacity,
-//             'roomBoardType' => $roomBoardType,
-//             'roomPrice' => $roomPrice,
-//             'removeRoom' => $removeRoom
-
-//         ]));
-//         exit; // Ensure no further code is executed
-//     } elseif (isset($_GET['prevStep'])) {
-//         // Redirect to booking-step1.php with the current data
-//         header('Location: booking-step1.php?' . http_build_query([
-//             'checkIn' => $checkIn,
-//             'checkOut' => $checkOut,
-//             'guest' => $guest,
-//             'adult' => $adult,
-//             'child' => $child,
-//             'total' => $total
-//         ]));
-//         exit; // Ensure no further code is executed
-//     }
-// }
-
 // Perform database query after redirection logic
 $stmt = $conn->prepare("SELECT * FROM tb_room WHERE room_capacity >= :guest");
 $stmt->bindParam(':guest', $guest, PDO::PARAM_INT);
 $stmt->execute();
 $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// echo "checkIn " . $checkIn . " & " . $checkOut . " &g " . $guest . " &a " . $adult . " &c " . $child . " &t " . $total;
-// echo "<br>roomNumber " .$roomNumber . " &roomSize " . $roomSize . " &roomCapacity " . $roomCapacity . " &roomBoardType " . $roomBoardType . " &roomPrice " . $roomPrice . " &removeRoom " . $removeRoom;
 ?>
 
 <!DOCTYPE html>
@@ -134,22 +75,12 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <form method="get" class="booking-group shadow w-100 d-flex flex-row bg-white mt-5" role="group"
                     id="roomFilterForm">
 
-                    <div class="booking-check card d-flex flex-column justify-content-center align-items-center"
-                        style="flex: 1 1 25%;">
-
+                    <div class="booking-check d-flex justify-content-center align-items-center ps-4"
+                        style="flex: 1 1 80%;">
+                        <input type="text" class="form-control" id="inputCodeBtn" placeholder="ใช้โค้ดที่นี่">
                     </div>
 
-                    <div class="booking-check card d-flex flex-column justify-content-center align-items-center"
-                        style="flex: 1 1 25%;">
-
-                    </div>
-
-                    <div class="booking-check card d-flex flex-column justify-content-center align-items-center"
-                        style="flex: 1 1 25%;">
-
-                    </div>
-
-                    <div class="booking-check d-flex justify-content-center align-items-center" style="flex: 1 1 25%;">
+                    <div class="booking-check d-flex justify-content-center align-items-center" style="flex: 1 1 20%;">
                         <button type="submit" class="btn btn-sm" id="useCodeBtn"
                             style="width: 100px; height: 40px; background-color: var(--green);"
                             name="useCode">ใช้คูปอง</button>
@@ -366,8 +297,6 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </div>
         </section>
     </main>
-
-    <script src="assets/js/action-booking.js"></script>
 
     <script>
     document.addEventListener("DOMContentLoaded", () => {

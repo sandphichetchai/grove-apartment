@@ -378,7 +378,6 @@ echo "<br>roomNumber " .$roomNumber . " &roomSize " . $roomSize . " &roomCapacit
     </main>
 
     <script src="assets/js/checkin.js"></script>
-    <script src="assets/js/action-booking.js"></script>
 
 </body>
 

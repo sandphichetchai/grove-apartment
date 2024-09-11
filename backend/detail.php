@@ -7,7 +7,7 @@ require_once "../connect.php";
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Room</title>
+    <title>รายละเอียด</title>
     <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport" />
 
     <link href="assets/css/profile.css" rel="stylesheet" />
@@ -112,9 +112,6 @@ require_once "../connect.php";
                                                             <?php endforeach; ?>
                                                         </tbody>
 
-
-
-
                                                     </table>
 
                                                     <?php
@@ -134,23 +131,6 @@ require_once "../connect.php";
 
 
                 <script>
-                document.getElementById('phone_number').addEventListener('input', function(e) {
-                    if (e.target.value.length > 10) {
-                        e.target.value = e.target.value.slice(0, 10);
-                    }
-                });
-                </script>
-
-                <script>
-                let imgInput = document.getElementById('imgInput');
-                let previewImg = document.getElementById('previewImg');
-
-                imgInput.onchange = evt => {
-                    const [file] = imgInput.files;
-                    if (file) {
-                        previewImg.src = URL.createObjectURL(file)
-                    }
-                }
                 </script>
 </body>
 

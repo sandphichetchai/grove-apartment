@@ -112,7 +112,6 @@ a {
   opacity: 0; /* ซ่อน popup เริ่มต้น */
   transition: opacity 0.5s ease;
   z-index: 1050;
-  display: none;
 }
 
 .video-popup.show {

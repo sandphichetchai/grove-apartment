@@ -442,7 +442,7 @@ require 'top-nav.php';
 
     <!-- Popup สำหรับวิดีโอ -->
     <div id="video-popup" class="video-popup">
-        <iframe id="youtube-video" src="" frameborder="0"
+        <iframe id="content-video" src="" frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen></iframe>
     </div>
@@ -571,7 +571,7 @@ require 'top-nav.php';
         event.preventDefault();
         const videoPopup = document.getElementById('video-popup');
         const overlay = document.getElementById('overlay');
-        const youtubeVideo = document.getElementById('youtube-video');
+        const contentVideo = document.getElementById('content-video');
 
         // แสดง popup และ overlay
         videoPopup.style.display = 'block';
@@ -583,12 +583,13 @@ require 'top-nav.php';
         }, 10); // ใช้ค่า delay เล็กน้อยเพื่อให้ transition มีผล
 
         // ตั้งค่า URL ของวิดีโอ YouTube ที่จะเล่น
-        youtubeVideo.src = 'https://www.youtube.com/embed/YBdekGSC68A?autoplay=0';
+        contentVideo.src =
+            'https://www.facebook.com/plugins/video.php?href=https://fb.watch/uuy-9e4B1E/?autoplay=0&mute=1';
     });
 
     document.getElementById('overlay').addEventListener('click', function() {
         const videoPopup = document.getElementById('video-popup');
-        const youtubeVideo = document.getElementById('youtube-video');
+        const contentVideo = document.getElementById('content-video');
 
         // ลบคลาส .show เพื่อให้เกิด transition ซ่อน popup
         videoPopup.classList.remove('show');
@@ -598,7 +599,7 @@ require 'top-nav.php';
             videoPopup.style.display = 'none';
             document.getElementById('overlay').style.display = 'none';
             // หยุดการเล่นวิดีโอ
-            youtubeVideo.src = '';
+            contentVideo.src = '';
         }, 500);
     });
     </script>
